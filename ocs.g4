@@ -2,6 +2,12 @@ grammar ocs;
 prog:	(cmd* NEWLINE)* ;
 
 //zmienic expr, dodac home, jump, getx, gety, claer, reset, naprawic gramtyke, i wczytywanie z pliki, multi komenty w jendej liniiS, angle nie dyskretne
+TRUE: 'TRUE'
+    | 'true'
+    | 'True';
+FALSE: 'FALSE'
+    | 'false'
+    | 'False';
 cmd: go
    | jump
    | home
@@ -11,7 +17,6 @@ cmd: go
    | setViev
    | for
    | if
-   | fun
    | getX
    | getY
    | declaration
@@ -20,7 +25,12 @@ cmd: go
    | putItem
    | checkField
    | spaceLeft
+   | setValue
    ;
+
+setValue: name '=' expr
+    | name '=' name;
+
 
 setViev: 'SETVIEW' KATY;
 
@@ -55,14 +65,20 @@ comparisonOperator: '<'
 name
    : STRING
    ;
-expr:	expr ('*'|'/') expr
-    |	expr ('+'|'-') expr
-    |   expr ('=') expr
-    |   INT
-    |   expr comparisonOperator expr
+value
+   : INT
+   | TRUE
+   | FALSE
+   | name;
+
+expr:	value ('*'|'/') (value|expr)
+    |	value ('+'|'-') (value|expr)
+    |   value comparisonOperator value
     ;
 declaration: 'INT' name expr |
-       'BOOL' name (TRUE|FALSE);
+       'BOOL' name (TRUE|FALSE)
+       | 'BOOL' name expr
+       | fun;
 getX: 'getX';
 getY: 'getY';
 go: 'GO' expr|
@@ -73,8 +89,8 @@ home: 'HOME';
 clear: 'CLEAR' ;
 reset: 'RESET';
 angle: 'ANGLE' ('90'|'180'|'270'|'360');
-fun: 'FOO' name block return name '->'('INT'|'BOOL')
-    |'FOO' name block '->' 'VOID';
+fun: 'FUN' name block return name '->'('INT'|'BOOL')
+    |'FUN' name block '->' 'VOID';
 return: 'RETURN';
 number
    : INT
@@ -85,9 +101,3 @@ INT     : [0-9]+ ;
 STRING : [a-zA-Z][a-zA-Z0-9_]*;
 EOL    : '\r'? '\n'    ;
 WS    : [ \t\r\n] -> skip;
-TRUE: 'TRUE'
-    | 'true'
-    | 'True';
-FALSE: 'FALSE'
-    | 'false'
-    | 'False';
