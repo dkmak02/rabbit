@@ -1,7 +1,7 @@
 grammar ocs;
 prog:	(cmd* NEWLINE)* ;
 
-//zmienic expr, dodac home, jump, getx, gety, claer, reset, naprawic gramtyke, i wczytywanie z pliki, multi komenty w jendej liniiS, angle nie dyskretne
+//wczytywanie z pliki
 TRUE: 'TRUE'
     | 'true'
     | 'True';
@@ -11,7 +11,6 @@ FALSE: 'FALSE'
 cmd: go
    | jump
    | home
-   | clear
    | reset
    | angle
    | setViev
@@ -74,6 +73,7 @@ value
 expr:	value ('*'|'/') (value|expr)
     |	value ('+'|'-') (value|expr)
     |   value comparisonOperator value
+    | value
     ;
 declaration: 'INT' name expr |
        'BOOL' name (TRUE|FALSE)
@@ -86,7 +86,6 @@ go: 'GO' expr|
 
 jump: 'JUMP' number number;
 home: 'HOME';
-clear: 'CLEAR' ;
 reset: 'RESET';
 angle: 'ANGLE' ('90'|'180'|'270'|'360');
 fun: 'FUN' name block return name '->'('INT'|'BOOL')

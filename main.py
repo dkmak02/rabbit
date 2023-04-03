@@ -1,14 +1,19 @@
-import math
 import pygame
 import sys
 from rabbit import Rabbit
 keywords = """
 go
 angle
+home
+jump
+reset
+getX
+getY
+setView
 """
 keywords= keywords.split()
 alphabetical = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-numerical = "1234567890"
+numerical = "-1234567890,"
 whitespace_key = "\t \r \n"
 eof_key = '\0'
 IDENTIFIER = "Indentifier"
@@ -21,7 +26,6 @@ WINDOWX    = 500
 WINDOWY    = 500
 RABBIT_WIDTH = 25
 RABBIT_HEIGHT = 25
-HYPOTENUSE = int(math.sqrt(15**2 + 20**2))
 NOSEANGLE = 15
 class Token:
 	def __init__(self, startChar):
@@ -140,6 +144,41 @@ class Parser:
 			self.Match()
 			if(self.Match(NUMERIC) == -1):
 				return
+			katy = [0, 90, 180, 270, 360]
+			if int(self.currToken().value) not in katy:
+				print("Niepoprawny kat")
+				return
+			self.Rabbit.rotate(int(self.currToken().value))
+			print(self.currToken().value)
+		if nextToken.value in ['home']:
+			self.Match()
+			self.Rabbit.home()
+		if nextToken.value in ['jump']:
+			self.Match()
+			if (self.Match(NUMERIC) == -1):
+				return
+			tab = self.currToken().value.split(",")
+			if len(tab) != 2:
+				print("Niepoprawna liczba argumentow")
+				return
+			self.Rabbit.jump(int(tab[0]), int(tab[1]), self.screen)
+		if nextToken.value in ['reset']:
+			self.Match()
+			P.graphInit()
+		# if nextToken.value in ['getX']:
+		# 	self.Match()
+		# 	self.Rabbit.getX()
+		# if nextToken.value in ['getY']:
+		# 	self.Match()
+		# 	self.Rabbit.getY()
+		if nextToken.value in ['setView']:
+			self.Match()
+			if (self.Match(IDENTIFIER) == -1):
+				return
+			katy = ["prawo","gora","dol","lewo"]
+			if self.currToken().value not in katy:
+				print("Niepoprawny kat")
+				return
 			self.Rabbit.rotate(self.currToken().value)
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
@@ -151,6 +190,9 @@ class Parser:
 		token = self.getNextToken()
 		if(expectedTokenType == None):
 			return
+		if(token.type != expectedTokenType):
+			print("Expected token type " + expectedTokenType + " but got " + token.type)
+			return -1
 print("Podaj komendy: ")
 source = " "
 P = Parser(source)
@@ -163,6 +205,3 @@ while True:
 	source = source + "  "
 	P.reInit(source)
 	P.parse()
-
-
-
