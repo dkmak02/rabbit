@@ -132,8 +132,10 @@ class Parser:
 				break
 	def parseSentence(self):
 		nextToken = self.lookNextToken()
+		if nextToken == "":
+			return
 		if nextToken.value not in keywords:
-			print("Niezgodnosc z gramatyka")
+			print("Niezgodnosc z gramatyka: " + nextToken.value)
 			return
 		if nextToken.value in ['go']:
 			self.Match()
@@ -149,7 +151,6 @@ class Parser:
 				print("Niepoprawny kat")
 				return
 			self.Rabbit.rotate(int(self.currToken().value))
-			print(self.currToken().value)
 		if nextToken.value in ['home']:
 			self.Match()
 			self.Rabbit.home()
@@ -197,6 +198,13 @@ print("Podaj komendy: ")
 source = " "
 P = Parser(source)
 P.graphInit()
+with open("test.rabbit", "r") as f:
+	for line in f:
+		if line != "\n":
+			source = line
+			P.reInit(source)
+			P.parse()
+
 
 while True:
 	source = input()
