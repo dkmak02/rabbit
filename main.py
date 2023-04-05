@@ -1,6 +1,7 @@
 import pygame
 import sys
 from rabbit import Rabbit
+import time
 keywords = """
 go
 angle
@@ -178,7 +179,7 @@ class Parser:
 				return
 			katy = ["prawo","gora","dol","lewo"]
 			if self.currToken().value not in katy:
-				print("Niepoprawny kat")
+				print("Niepoprawny kierunek")
 				return
 			self.Rabbit.rotate(self.currToken().value)
 		for event in pygame.event.get():
@@ -200,10 +201,12 @@ P = Parser(source)
 P.graphInit()
 with open("test.rabbit", "r") as f:
 	for line in f:
+		time.sleep(1)
 		if line != "\n":
 			source = line
 			P.reInit(source)
 			P.parse()
+
 
 
 while True:

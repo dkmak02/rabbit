@@ -1,2 +1,5 @@
 go 90
-angle 90
+angle 180
+go 200
+home
+go 200

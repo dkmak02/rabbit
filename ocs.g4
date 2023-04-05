@@ -13,7 +13,7 @@ cmd: go
    | home
    | reset
    | angle
-   | setViev
+   | setView
    | for
    | if
    | getX
