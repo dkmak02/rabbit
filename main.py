@@ -44,6 +44,8 @@ class Tokenizer:
 		self.lista = []
 	def calculate(self, split_string):
 		split_string = re.split(r'([*/+-])', split_string)
+		if split_string[0]=='':
+			split_string[0] = '0'
 		for v in split_string:
 			if v in ['*', '/']:
 				operator = split_string.index(v)
