@@ -44,7 +44,6 @@ class Tokenizer:
 		self.lista = []
 	def calculate(self, split_string):
 		split_string = re.split(r'([*/+-])', split_string)
-		print(split_string)
 		for v in split_string:
 			if v in ['*', '/']:
 				operator = split_string.index(v)
@@ -144,7 +143,7 @@ class Tokenizer:
 		token = Token(char)
 		if char in eof_key:
 			token.type = EOF
-			if len(self.lista) > 3:
+			if len(self.lista) > 3 and self.lista[0] == 'bool':
 				if self.lista[1] not in dec.keys():
 					dec[self.lista[1]] = self.logicalCompare()
 				else:
@@ -167,6 +166,8 @@ class Tokenizer:
 					dec[self.lista[1]] = self.lista[2]
 				else:
 					print("Variable already declared or wrong value", self.lista)
+			if token.value in dec.keys():
+				self.lista.append(token.value)
 			return token
 		if char in numerical or alphabetical:
 			token.type = NUMERIC
@@ -182,9 +183,16 @@ class Tokenizer:
 				self.lista.append(token.value)
 				if len(self.lista) > 2 and self.lista[1] not in dec.keys():
 					dec[self.lista[1]] = self.calculate(self.lista[2])
+				elif len(self.lista) == 1:
+					pass
+				elif len(self.lista) == 2 and self.lista[0] in dec.keys():
+					dec[self.lista[0]] = self.calculate(self.lista[1])
+				else:
+					print("Variable already declared or wrong value", self.lista)
 				token.value = self.calculate(token.value)
 			#print(token.value)
 			return token
+
 
 	def getChar(self):
 		char = self.scanner.scan()
@@ -259,7 +267,7 @@ class Parser:
 		nextToken = self.lookNextToken()
 		if nextToken == "":
 			return
-		if nextToken.type == 'Declaration':
+		if nextToken.type == 'Declaration' or nextToken.value in dec.keys():
 			return
 		if nextToken.value not in keywords:
 			print("Niezgodnosc z gramatyka: " + nextToken.value)
@@ -327,10 +335,20 @@ P = Parser(source)
 P.graphInit()
 with open("test.rabbit", "r") as f:
 	for line in f:
-		time.sleep(0.1)
-		if line != "\n":
+		v = line.split()
+		if v[0] not in ['int','bool','fun'] and v[0] not in dec.keys() and v[0] not in keywords:
+			print("Przypisanie wartości do nie utworzonej zmiennej: " + v[0])
+			sys.exit()
+		if v[0] in ['int','bool','fun'] or v[0] in dec.keys():
 			source = line
-			print(dec)
+			P.reInit(source)
+			P.parse()
+with open("test.rabbit", "r") as f:
+	for line in f:
+		time.sleep(0.1)
+		v = line.split()
+		if line != "\n" and v[0] not in ['int','bool','fun'] and v[0] not in dec.keys():
+			source = line
 			P.reInit(source)
 			P.parse()
 

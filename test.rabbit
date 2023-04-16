@@ -1,7 +1,8 @@
-bool xda 2>=1 and 1>2 or 2>1
-bool xdb 2>=3 and xda
 int dsa 2+2*2
+dsa 6
 int dsb 2+dsa*2+dsa
+dsa 20
+ds 2
 go 20+21/2+2*2+2/2
 angle 180
 go 200
