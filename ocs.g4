@@ -1,7 +1,6 @@
 grammar ocs;
 prog:	(cmd* NEWLINE)* ;
 
-//wczytywanie z pliki
 TRUE: 'TRUE'
     | 'true'
     | 'True';
@@ -31,7 +30,7 @@ setValue: name '=' expr
     | name '=' name;
 
 
-setViev: 'SETVIEW' KATY;
+setView: 'SETVIEW' KATY;
 
 spaceLeft: 'spaceLeft';
 

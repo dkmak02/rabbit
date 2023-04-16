@@ -2,6 +2,7 @@ import pygame
 import sys
 from rabbit import Rabbit
 import time
+import re
 keywords = """
 go
 angle
@@ -14,9 +15,13 @@ setView
 """
 keywords= keywords.split()
 alphabetical = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-numerical = "-1234567890,"
+numerical = "-1234567890,*/+-=><!"
+boolean = ['bool']
+DECLARATIONS = ['int', 'bool', 'fun']
+mathematical = ['+', '-', '*', '/']
 whitespace_key = "\t \r \n"
 eof_key = '\0'
+BOOLEAN = "Boolean"
 IDENTIFIER = "Indentifier"
 KEYWORD = "Keyword"
 WHITESPACE = "Whitespace"
@@ -28,6 +33,7 @@ WINDOWY    = 500
 RABBIT_WIDTH = 25
 RABBIT_HEIGHT = 25
 NOSEANGLE = 15
+dec = {}
 class Token:
 	def __init__(self, startChar):
 		self.value = startChar
@@ -35,6 +41,99 @@ class Token:
 class Tokenizer:
 	def __init__(self,source):
 		self.scanner = Scanner(source)
+		self.lista = []
+	def calculate(self, split_string):
+		split_string = re.split(r'([*/+-])', split_string)
+		print(split_string)
+		for v in split_string:
+			if v in ['*', '/']:
+				operator = split_string.index(v)
+				dsa = dec[split_string[operator - 1]] if split_string[operator - 1] in dec else split_string[operator - 1]
+				dsa2 = dec[split_string[operator + 1]] if split_string[operator + 1] in dec else split_string[operator + 1]
+				v1 = operator - 1
+				v2 = operator + 1
+				if v == '*':
+					split_string[v1] = str(int(dsa) * int(dsa2))
+					split_string.pop(v2)
+					split_string.pop(operator)
+				elif v == '/':
+					split_string[v1] = str(int(int(dsa) / int(dsa2)))
+					split_string.pop(v2)
+					split_string.pop(operator)
+		while len(split_string) > 1:
+			for v in split_string:
+				if v in ['+', '-']:
+					operator = split_string.index(v)
+					dsa = dec[split_string[operator - 1]] if split_string[operator - 1] in dec else split_string[
+						operator - 1]
+					dsa2 = dec[split_string[operator + 1]] if split_string[operator + 1] in dec else split_string[
+						operator + 1]
+					v1 = operator - 1
+					v2 = operator + 1
+					if v == '+':
+						split_string[v1] = str(int(dsa) + int(dsa2))
+						split_string.pop(v2)
+						split_string.pop(operator)
+					elif v == '-':
+						split_string[v1] = str(int(dsa) - int(dsa2))
+						split_string.pop(v2)
+						split_string.pop(operator)
+		return split_string[0]
+	def compare(self,list):
+		split_string = re.split(r'(\s*(?:)!=|>=|<=|==|[<>])', list)
+		v1 = self.calculate(split_string[0])
+		v2 = self.calculate(split_string[2])
+		com = split_string[1]
+		if com == '==':
+			if v1 == v2:
+				return True
+		elif com == '!=':
+			if v1 != v2:
+				return True
+		elif com == '>':
+			if v1 > v2:
+				return True
+		elif com == '<':
+			if v1 < v2:
+				return True
+		elif com == '>=':
+			if v1 >= v2:
+				return True
+		elif com == '<=':
+			if v1 <= v2:
+				return True
+		return False
+	def logicalCompare(self):
+		while len(self.lista) > 3:
+			for v in self.lista:
+				if v == 'and':
+					operator = self.lista.index(v)
+					v1 = self.lista[operator - 1]
+					if v1 in dec.keys():
+						v1 = dec[v1]
+					if v1 not in ['True', 'False', 'true', 'false']:
+						v1 = self.compare(self.lista[operator - 1])
+					v2 = self.lista[operator + 1]
+					if v2 in dec.keys():
+						v2 = dec[v2]
+					if v2 not in ['True', 'False', 'true', 'false']:
+						v2 = self.compare(self.lista[operator + 1])
+					self.lista[operator - 1] = str(v1 and v2)
+					self.lista.pop(operator + 1)
+					self.lista.pop(operator)
+				elif v == 'or':
+					operator = self.lista.index(v)
+					v1 = self.lista[operator - 1]
+					if v1 not in ['True', 'False', 'true', 'false']:
+						v1 = self.compare(self.lista[operator - 1])
+					v2 = self.lista[operator + 1]
+					if v2 not in ['True', 'False', 'true', 'false']:
+						v2 = self.compare(self.lista[operator + 1])
+					value = True if v1 == True or v2 == True else False
+					self.lista[operator - 1] = str(value)
+					self.lista.pop(operator + 1)
+					self.lista.pop(operator)
+		return self.lista[2]
 	def getToken(self):
 		char = self.getChar()
 		if char in " \t \n":
@@ -45,6 +144,11 @@ class Tokenizer:
 		token = Token(char)
 		if char in eof_key:
 			token.type = EOF
+			if len(self.lista) > 3:
+				if self.lista[1] not in dec.keys():
+					dec[self.lista[1]] = self.logicalCompare()
+				else:
+					print("Variable already declared or wrong value")
 			return token
 		if char in alphabetical:
 			token.type = IDENTIFIER
@@ -54,16 +158,36 @@ class Tokenizer:
 				char = self.getChar()
 			if token.value in keywords:
 				token.type = KEYWORD
+			if token.value in DECLARATIONS:
+				token.type = 'Declaration'
+			if 'bool' in self.lista or token.type == 'Declaration' or 'int' in self.lista or 'fun' in self.lista:
+				self.lista.append(token.value)
+			if len(self.lista) == 3:
+				if self.lista[1] not in dec.keys() and self.lista[2] in ['True', 'False', 'true', 'false']:
+					dec[self.lista[1]] = self.lista[2]
+				else:
+					print("Variable already declared or wrong value", self.lista)
 			return token
-		if char in numerical:
+		if char in numerical or alphabetical:
 			token.type = NUMERIC
 			char = self.getChar()
-			while char in numerical:
+			while char in numerical or char in alphabetical:
 				token.value += char
 				char = self.getChar()
+			vas = (token.value.find('>') or token.value.find('<') or token.value.find('==') or token.value.find('!='))
+			#print(token.value)
+			if vas != -1:
+				self.lista.append(token.value)
+			else:
+				self.lista.append(token.value)
+				if len(self.lista) > 2 and self.lista[1] not in dec.keys():
+					dec[self.lista[1]] = self.calculate(self.lista[2])
+				token.value = self.calculate(token.value)
+			#print(token.value)
 			return token
+
 	def getChar(self):
-		char   = self.scanner.scan()
+		char = self.scanner.scan()
 		return char
 class Scanner:
 	def __init__(self, source):
@@ -77,7 +201,7 @@ class Scanner:
 	def scan(self):
 		if self.index < self.eof:
 			char = self.file[self.index]
-			self.index = self.index +  1
+			self.index = self.index + 1
 			return char
 		return '\0'
 class Parser:
@@ -134,6 +258,8 @@ class Parser:
 	def parseSentence(self):
 		nextToken = self.lookNextToken()
 		if nextToken == "":
+			return
+		if nextToken.type == 'Declaration':
 			return
 		if nextToken.value not in keywords:
 			print("Niezgodnosc z gramatyka: " + nextToken.value)
@@ -201,9 +327,10 @@ P = Parser(source)
 P.graphInit()
 with open("test.rabbit", "r") as f:
 	for line in f:
-		time.sleep(1)
+		time.sleep(0.1)
 		if line != "\n":
 			source = line
+			print(dec)
 			P.reInit(source)
 			P.parse()
 
