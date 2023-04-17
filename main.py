@@ -354,7 +354,6 @@ with open("test.rabbit", "r") as f:
 			P.parse()
 with open("test.rabbit", "r") as f:
 	for line in f:
-		time.sleep(0.1)
 		v = line.split()
 		if line != "\n" and v[0] not in ['int','bool','fun'] and v[0] not in dec.keys():
 			source = line
