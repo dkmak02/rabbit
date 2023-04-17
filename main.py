@@ -12,6 +12,7 @@ reset
 getX
 getY
 setView
+sleep
 """
 keywords= keywords.split()
 alphabetical = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -204,7 +205,7 @@ class Scanner:
 		self.source = source
 		try:
 			self.file = self.source
-			self.eof = len(self.file) - 1
+			self.eof = len(self.file)
 			self.index = 0
 		except Exception as e:
 			raise e
@@ -288,6 +289,12 @@ class Parser:
 				print("Niepoprawny kat")
 				return
 			self.Rabbit.rotate(int(self.currToken().value))
+		if nextToken.value in ['sleep']:
+			self.Match()
+			if self.Match(NUMERIC) == -1:
+				return
+			t1 = int(self.currToken().value)
+			time.sleep(t1)
 		if nextToken.value in ['home']:
 			self.Match()
 			self.Rabbit.home()
