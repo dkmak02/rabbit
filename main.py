@@ -47,21 +47,27 @@ class Tokenizer:
 		split_string = re.split(r'([*/+-])', split_string)
 		if split_string[0]=='':
 			split_string[0] = '0'
-		for v in split_string:
-			if v in ['*', '/']:
-				operator = split_string.index(v)
-				dsa = dec[split_string[operator - 1]] if split_string[operator - 1] in dec else split_string[operator - 1]
-				dsa2 = dec[split_string[operator + 1]] if split_string[operator + 1] in dec else split_string[operator + 1]
-				v1 = operator - 1
-				v2 = operator + 1
-				if v == '*':
-					split_string[v1] = str(int(dsa) * int(dsa2))
-					split_string.pop(v2)
-					split_string.pop(operator)
-				elif v == '/':
-					split_string[v1] = str(int(int(dsa) / int(dsa2)))
-					split_string.pop(v2)
-					split_string.pop(operator)
+		while '*' in split_string or '/' in split_string:
+			for v in split_string:
+				if v in ['*', '/']:
+					operator = split_string.index(v)
+					dsa = dec[split_string[operator - 1]] if split_string[operator - 1] in dec else split_string[operator - 1]
+					dsa2 = dec[split_string[operator + 1]] if split_string[operator + 1] in dec else split_string[operator + 1]
+					v1 = operator - 1
+					v2 = operator + 1
+					if dsa == 'True' or dsa == 'true':
+						dsa = '1'
+					elif dsa == 'False' or dsa == 'false':
+						dsa = '0'
+					if v == '*':
+						split_string[v1] = str(int(dsa) * int(dsa2))
+						split_string.pop(v2)
+						split_string.pop(operator)
+					elif v == '/':
+						split_string[v1] = str(int(int(dsa) / int(dsa2)))
+						split_string.pop(v2)
+						split_string.pop(operator)
+					break
 		while len(split_string) > 1:
 			for v in split_string:
 				if v in ['+', '-']:
@@ -72,6 +78,14 @@ class Tokenizer:
 						operator + 1]
 					v1 = operator - 1
 					v2 = operator + 1
+					if dsa == 'True' or dsa == 'true':
+						dsa = '1'
+					if dsa == 'False' or dsa == 'false':
+						dsa = '0'
+					if dsa2 == 'True' or dsa2 == 'true':
+						dsa2 = '1'
+					if dsa2 == 'False' or dsa2 == 'false':
+						dsa2 = '0'
 					if v == '+':
 						split_string[v1] = str(int(dsa) + int(dsa2))
 						split_string.pop(v2)
@@ -120,15 +134,22 @@ class Tokenizer:
 						v2 = dec[v2]
 					if v2 not in ['True', 'False', 'true', 'false']:
 						v2 = self.compare(self.lista[operator + 1])
-					self.lista[operator - 1] = str(v1 and v2)
+					v1 = str(v1)
+					v2 = str(v2)
+					value = False if v1 == 'False' or v1 == 'false' or v2 == 'False' or v2 == 'false' else True
+					self.lista[operator - 1] = str(value)
 					self.lista.pop(operator + 1)
 					self.lista.pop(operator)
 				elif v == 'or':
 					operator = self.lista.index(v)
 					v1 = self.lista[operator - 1]
+					if v1 in dec.keys():
+						v1 = dec[v1]
 					if v1 not in ['True', 'False', 'true', 'false']:
 						v1 = self.compare(self.lista[operator - 1])
 					v2 = self.lista[operator + 1]
+					if v2 in dec.keys():
+						v2 = dec[v2]
 					if v2 not in ['True', 'False', 'true', 'false']:
 						v2 = self.compare(self.lista[operator + 1])
 					value = True if v1 == True or v2 == True else False
@@ -151,6 +172,8 @@ class Tokenizer:
 					dec[self.lista[1]] = self.logicalCompare()
 				else:
 					print("Variable already declared or wrong value")
+			elif len(self.lista) == 3 and self.lista[0] == 'bool' and self.lista[1] not in dec.keys():
+				dec[self.lista[1]] = dec[self.lista[2]]
 			return token
 		if char in alphabetical:
 			token.type = IDENTIFIER
@@ -165,11 +188,15 @@ class Tokenizer:
 			if 'bool' in self.lista or token.type == 'Declaration' or 'int' in self.lista or 'fun' in self.lista:
 				self.lista.append(token.value)
 			if len(self.lista) == 3:
-				if self.lista[1] not in dec.keys() and self.lista[2] in ['True', 'False', 'true', 'false']:
-					dec[self.lista[1]] = self.lista[2]
+				if self.lista[1] not in dec.keys() and (self.lista[2] in ['True', 'False', 'true', 'false'] or self.lista[2] in dec.keys()):
+					if self.lista[2] in dec.keys():
+						pass
+					else:
+						dec[self.lista[1]] = self.lista[2]
 				else:
+					print(self.lista)
 					print("Variable already declared or wrong value", self.lista)
-			if token.value in dec.keys():
+			if token.value in dec.keys() and self.lista[0] not in  ['bool','int','fun']:
 				self.lista.append(token.value)
 			return token
 		if char in numerical or alphabetical:
@@ -179,21 +206,20 @@ class Tokenizer:
 				token.value += char
 				char = self.getChar()
 			vas = (token.value.find('>') or token.value.find('<') or token.value.find('==') or token.value.find('!='))
-			#print(token.value)
 			if vas != -1:
 				self.lista.append(token.value)
 			else:
 				self.lista.append(token.value)
-				if len(self.lista) > 2 and self.lista[1] not in dec.keys():
+				if len(self.lista) > 2 and self.lista[1] not in dec.keys() and self.lista[0] != 'bool':
 					dec[self.lista[1]] = self.calculate(self.lista[2])
 				elif len(self.lista) == 1:
 					pass
 				elif len(self.lista) == 2 and self.lista[0] in dec.keys():
 					dec[self.lista[0]] = self.calculate(self.lista[1])
 				else:
-					print("Variable already declared or wrong value", self.lista)
+					if(self.lista[0] != 'bool'):
+						print("193: Variable already declared or wrong value", self.lista)
 				token.value = self.calculate(token.value)
-			#print(token.value)
 			return token
 
 
@@ -277,12 +303,16 @@ class Parser:
 			return
 		if nextToken.value in ['go']:
 			self.Match()
+			val = 0
 			if(self.Match(NUMERIC) == -1):
-				return
-			self.Rabbit.mvForward(int(self.currToken().value), self.screen)
+				val = Tokenizer.calculate(self.currToken(),self.currToken().value)
+				val = int(val)
+			else:
+				val = int(self.currToken().value)
+			self.Rabbit.mvForward(val, self.screen)
 		if nextToken.value in ['angle']:
 			self.Match()
-			if(self.Match(NUMERIC) == -1):
+			if(self.Match()):
 				return
 			katy = [0, 90, 180, 270, 360]
 			if int(self.currToken().value) not in katy:
@@ -336,7 +366,6 @@ class Parser:
 		if(expectedTokenType == None):
 			return
 		if(token.type != expectedTokenType):
-			print("Expected token type " + expectedTokenType + " but got " + token.type)
 			return -1
 print("Podaj komendy: ")
 source = " "
@@ -345,22 +374,11 @@ P.graphInit()
 with open("test.rabbit", "r") as f:
 	for line in f:
 		v = line.split()
-		if v[0] not in ['int','bool','fun'] and v[0] not in dec.keys() and v[0] not in keywords:
-			print("Przypisanie wartości do nie utworzonej zmiennej: " + v[0])
-			sys.exit()
-		if v[0] in ['int','bool','fun'] or v[0] in dec.keys():
+		if line != "\n":
 			source = line
 			P.reInit(source)
 			P.parse()
-with open("test.rabbit", "r") as f:
-	for line in f:
-		v = line.split()
-		if line != "\n" and v[0] not in ['int','bool','fun'] and v[0] not in dec.keys():
-			source = line
-			P.reInit(source)
-			P.parse()
-
-
+print(dec)
 
 while True:
 	source = input()
