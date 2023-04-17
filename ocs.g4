@@ -24,6 +24,7 @@ cmd: go
    | checkField
    | spaceLeft
    | setValue
+   | sleep
    ;
 
 setValue: name '=' expr
@@ -93,6 +94,7 @@ return: 'RETURN';
 number
    : INT
    ;
+sleep: 'sleep' number;
 KATY: 'PRAWO'|'LEWO'|'GORA'|'DOL';
 NEWLINE : [\r\n]+ ;
 INT     : [0-9]+ ;
