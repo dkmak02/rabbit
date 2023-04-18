@@ -196,8 +196,9 @@ class Tokenizer:
 				else:
 					print(self.lista)
 					print("Variable already declared or wrong value", self.lista)
-			if token.value in dec.keys() and self.lista[0] not in  ['bool','int','fun']:
-				self.lista.append(token.value)
+			if len(self.lista) > 0:
+				if token.value in dec.keys() and self.lista[0] not in  ['bool','int','fun']:
+					self.lista.append(token.value)
 			return token
 		if char in numerical or alphabetical:
 			token.type = NUMERIC
@@ -305,7 +306,10 @@ class Parser:
 			self.Match()
 			val = 0
 			if(self.Match(NUMERIC) == -1):
-				val = Tokenizer.calculate(self.currToken(),self.currToken().value)
+				if self.currToken().value in dec.keys():
+					val = dec[self.currToken().value]
+				else:
+					val = Tokenizer.calculate(self.currToken(),self.currToken().value)
 				val = int(val)
 			else:
 				val = int(self.currToken().value)
