@@ -174,6 +174,18 @@ class Tokenizer:
 					print("Variable already declared or wrong value")
 			elif len(self.lista) == 3 and self.lista[0] == 'bool' and self.lista[1] not in dec.keys():
 				dec[self.lista[1]] = dec[self.lista[2]]
+			elif len(self.lista) == 2 and self.lista[0] in dec.keys():
+				if self.lista[1] in ['False', 'false', 'True', 'true']:
+					dec[self.lista[0]] = self.lista[1]
+				else:
+					vas = (self.lista[1].find('>') or self.lista[1].find('<') or self.lista[1].find('==') or self.lista[1].find(
+						'!='))
+					if vas != -1:
+						self.lista.insert(0, 'bool')
+						if len(self.lista) > 3 and self.lista[0] == 'bool':
+							dec[self.lista[1]] = self.logicalCompare()
+						else:
+							dec[self.lista[1]] = self.compare(self.lista[2])
 			return token
 		if char in alphabetical:
 			token.type = IDENTIFIER
@@ -199,6 +211,15 @@ class Tokenizer:
 			if len(self.lista) > 0:
 				if token.value in dec.keys() and self.lista[0] not in  ['bool','int','fun']:
 					self.lista.append(token.value)
+			if token.value in dec.keys() and token.value not in keywords:
+				if len(self.lista) > 0:
+					pass
+				else:
+					self.lista.append(token.value)
+			elif len(self.lista) > 0:
+				if self.lista[0] in dec.keys():
+					self.lista.append(token.value)
+
 			return token
 		if char in numerical or alphabetical:
 			token.type = NUMERIC
@@ -371,6 +392,21 @@ class Parser:
 			return
 		if(token.type != expectedTokenType):
 			return -1
+zmienne = []
+with open("test.rabbit", "r") as f:
+	for line in f:
+		if line != "\n":
+			v = line.split()
+			if v[0] in DECLARATIONS:
+				zmienne.append(v[1])
+			elif v[0] in keywords:
+				pass
+			elif v[0] in zmienne:
+				pass
+			else:
+				print("Not in variables or keywords: " + v[0])
+				sys.exit()
+
 print("Podaj komendy: ")
 source = " "
 P = Parser(source)
