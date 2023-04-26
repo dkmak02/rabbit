@@ -97,6 +97,8 @@ class Tokenizer:
 		return split_string[0]
 	def compare(self,list):
 		split_string = re.split(r'(\s*(?:)!=|>=|<=|==|[<>])', list)
+		if(len(split_string) == 1):
+			return True if int(list) != 0 else False
 		v1 = self.calculate(split_string[0])
 		v2 = self.calculate(split_string[2])
 		com = split_string[1]
@@ -173,13 +175,16 @@ class Tokenizer:
 				else:
 					print("Variable already declared or wrong value")
 			elif len(self.lista) == 3 and self.lista[0] == 'bool' and self.lista[1] not in dec.keys():
-				dec[self.lista[1]] = dec[self.lista[2]]
+				if self.lista[2] in dec.keys():
+					dec[self.lista[1]] = dec[self.lista[2]]
+				else:
+					dec[self.lista[1]] = self.compare(self.lista[2])
 			elif len(self.lista) == 2 and self.lista[0] in dec.keys():
 				if self.lista[1] in ['False', 'false', 'True', 'true']:
 					dec[self.lista[0]] = self.lista[1]
 				else:
 					vas = (self.lista[1].find('>') or self.lista[1].find('<') or self.lista[1].find('==') or self.lista[1].find(
-						'!='))
+						'!=') or self.lista[1].find('>=') or self.lista[1].find('<=') or self.lista[1].find('!='))
 					if vas != -1:
 						self.lista.insert(0, 'bool')
 						if len(self.lista) > 3 and self.lista[0] == 'bool':
@@ -205,9 +210,6 @@ class Tokenizer:
 						pass
 					else:
 						dec[self.lista[1]] = self.lista[2]
-				else:
-					print(self.lista)
-					print("Variable already declared or wrong value", self.lista)
 			if len(self.lista) > 0:
 				if token.value in dec.keys() and self.lista[0] not in  ['bool','int','fun']:
 					self.lista.append(token.value)
@@ -219,7 +221,12 @@ class Tokenizer:
 			elif len(self.lista) > 0:
 				if self.lista[0] in dec.keys():
 					self.lista.append(token.value)
-
+			if len(self.lista) > 2:
+				if self.lista[0] == 'int':
+					split_string = re.split(r'([*/+-])', self.lista[2])
+					if len(split_string) > 1:
+						self.lista[2] = self.calculate(self.lista[2])
+						dec[self.lista[1]] = self.lista[2]
 			return token
 		if char in numerical or alphabetical:
 			token.type = NUMERIC
