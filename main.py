@@ -13,6 +13,7 @@ getX
 getY
 setView
 sleep
+if
 """
 keywords= keywords.split()
 alphabetical = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -43,6 +44,7 @@ class Tokenizer:
 	def __init__(self,source):
 		self.scanner = Scanner(source)
 		self.lista = []
+		self.iflist = []
 	def calculate(self, split_string):
 		split_string = re.split(r'([*/+-])', split_string)
 		if split_string[0]=='':
@@ -102,6 +104,8 @@ class Tokenizer:
 		v1 = self.calculate(split_string[0])
 		v2 = self.calculate(split_string[2])
 		com = split_string[1]
+		v1 = dec[v1] if v1 in dec else v1
+		v2 = dec[v2] if v2 in dec else v2
 		if com == '==':
 			if v1 == v2:
 				return True
@@ -122,6 +126,10 @@ class Tokenizer:
 				return True
 		return False
 	def logicalCompare(self):
+		if len(self.iflist) > 3:
+			if self.iflist[0] == 'if':
+				self.lista = self.iflist[0:self.iflist.index('?')]
+				self.lista.insert(0, 'bool')
 		while len(self.lista) > 3:
 			for v in self.lista:
 				if v == 'and':
@@ -168,6 +176,37 @@ class Tokenizer:
 			return None
 		token = Token(char)
 		if char in eof_key:
+			if len(self.iflist) > 3:
+				if self.iflist[0] == 'if':
+					warunek = self.iflist[1:self.iflist.index('?')]
+					todo = self.iflist[self.iflist.index('{') + 1:self.iflist.index('}')]
+					if 'and' in warunek or 'or' in warunek:
+						warunek = self.logicalCompare()
+						self.lista = []
+					elif warunek[0] in ['True', 'true', 'false', 'False']:
+						warunek = True if warunek[0] in ['True', 'true'] else False
+						self.lista = []
+					else:
+						warunek = self.compare(warunek[0])
+						self.lista = []
+					if warunek == True:
+						so = []
+						for v in todo:
+							s =''
+							if v in keywords:
+								s += v
+
+								for b in range(todo.index(v) + 1, len(todo)):
+									if todo[b] in keywords:
+										break
+									s += ' ' + todo[b]
+								so.append(s)
+								todo[todo.index(v)] = 'used'
+						for v in so:
+							P.reInit(v)
+							P.parse()
+						P.reInit('go 0')
+				return token
 			token.type = EOF
 			if len(self.lista) > 3 and self.lista[0] == 'bool':
 				if self.lista[1] not in dec.keys():
@@ -227,6 +266,7 @@ class Tokenizer:
 					if len(split_string) > 1:
 						self.lista[2] = self.calculate(self.lista[2])
 						dec[self.lista[1]] = self.lista[2]
+			self.iflist.append(token.value)
 			return token
 		if char in numerical or alphabetical:
 			token.type = NUMERIC
@@ -240,15 +280,22 @@ class Tokenizer:
 			else:
 				self.lista.append(token.value)
 				if len(self.lista) > 2 and self.lista[1] not in dec.keys() and self.lista[0] != 'bool':
-					dec[self.lista[1]] = self.calculate(self.lista[2])
+					if self.iflist[0] == 'if':
+						pass
+					else:
+						dec[self.lista[1]] = self.calculate(self.lista[2])
 				elif len(self.lista) == 1:
 					pass
 				elif len(self.lista) == 2 and self.lista[0] in dec.keys():
 					dec[self.lista[0]] = self.calculate(self.lista[1])
 				else:
 					if(self.lista[0] != 'bool'):
-						print("193: Variable already declared or wrong value", self.lista)
+						if(self.iflist[0]=='if'):
+							pass
+						else:
+							print("193: Variable already declared or wrong value", self.lista)
 				token.value = self.calculate(token.value)
+			self.iflist.append(token.value)
 			return token
 
 

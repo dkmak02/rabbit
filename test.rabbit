@@ -1,11 +1,23 @@
+int de 3
+de 3
+
+bool xd false
+
+bool b1 2<=3
+bool b2 2>=3
+bool b3 2>3
+bool b4 2<3
+bool b5 2==3
+bool b6 2!=3
+
 int dsa 2+2*2
 dsa 6
 int dsb 2+dsa*2+dsa
-dsa 20
-ds 2
-go 20+21/2+2*2+2/2
-angle 180
-go 200
-home
-go 200
-bool xd false\n
+
+bool b7 dsb>=dsa
+
+int aa 90
+go aa
+angle 90
+if True ? { go 2*aa home go 200 home angle 90 } endif
+aa 92
