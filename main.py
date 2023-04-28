@@ -14,6 +14,7 @@ getY
 setView
 sleep
 if
+print
 """
 keywords= keywords.split()
 alphabetical = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -180,8 +181,11 @@ class Tokenizer:
 				if self.iflist[0] == 'if':
 					warunek = self.iflist[1:self.iflist.index('?')]
 					todo = self.iflist[self.iflist.index('{') + 1:self.iflist.index('}')]
+
 					if 'and' in warunek or 'or' in warunek:
 						warunek = self.logicalCompare()
+						if warunek == 'True' or warunek == 'true':
+							warunek = True
 						self.lista = []
 					elif warunek[0] in ['True', 'true', 'false', 'False']:
 						warunek = True if warunek[0] in ['True', 'true'] else False
@@ -206,7 +210,10 @@ class Tokenizer:
 							P.reInit(v)
 							P.parse()
 						P.reInit('go 0')
-				return token
+					else:
+						P.reInit('go 0')
+					return token
+
 			token.type = EOF
 			if len(self.lista) > 3 and self.lista[0] == 'bool':
 				if self.lista[1] not in dec.keys():
@@ -221,6 +228,13 @@ class Tokenizer:
 			elif len(self.lista) == 2 and self.lista[0] in dec.keys():
 				if self.lista[1] in ['False', 'false', 'True', 'true']:
 					dec[self.lista[0]] = self.lista[1]
+				elif self.lista[0] in dec.keys():
+					if self.lista[1].find("!") == 0:
+						if dec[self.lista[0]] == 'True' or dec[self.lista[0]] == 'true':
+							dec[self.lista[0]] = 'False'
+						else:
+							dec[self.lista[0]] = 'False' or dec[self.lista[0]] == 'false'
+							dec[self.lista[0]] = 'True'
 				else:
 					vas = (self.lista[1].find('>') or self.lista[1].find('<') or self.lista[1].find('==') or self.lista[1].find(
 						'!=') or self.lista[1].find('>=') or self.lista[1].find('<=') or self.lista[1].find('!='))
@@ -283,17 +297,22 @@ class Tokenizer:
 					if self.iflist[0] == 'if':
 						pass
 					else:
-						dec[self.lista[1]] = self.calculate(self.lista[2])
+						if self.lista[2].find('<=') == 1:
+							pass
+						else:
+							dec[self.lista[1]] = self.calculate(self.lista[2])
 				elif len(self.lista) == 1:
 					pass
 				elif len(self.lista) == 2 and self.lista[0] in dec.keys():
-					dec[self.lista[0]] = self.calculate(self.lista[1])
+					if dec[self.lista[0]] in ['True', 'true', 'False', 'false']:
+						pass
+					else:
+						dec[self.lista[0]] = self.calculate(self.lista[1])
 				else:
 					if(self.lista[0] != 'bool'):
 						if(self.iflist[0]=='if'):
 							pass
-						else:
-							print("193: Variable already declared or wrong value", self.lista)
+
 				token.value = self.calculate(token.value)
 			self.iflist.append(token.value)
 			return token
@@ -404,6 +423,11 @@ class Parser:
 				return
 			t1 = int(self.currToken().value)
 			time.sleep(t1)
+		if nextToken.value in ['print']:
+			self.Match()
+			if self.Match(IDENTIFIER) == -1:
+				return
+			print(self.currToken().value, dec[self.currToken().value])
 		if nextToken.value in ['home']:
 			self.Match()
 			self.Rabbit.home()
@@ -447,11 +471,15 @@ class Parser:
 		if(token.type != expectedTokenType):
 			return -1
 zmienne = []
-with open("test.rabbit", "r") as f:
+dojs = sys.argv[1]
+with open(dojs, "r") as f:
 	for line in f:
 		if line != "\n":
 			v = line.split()
 			if v[0] in DECLARATIONS:
+				if v[1] in zmienne:
+					print("Zmienna juz istnieje", v[1])
+					sys.exit()
 				zmienne.append(v[1])
 			elif v[0] in keywords:
 				pass
@@ -465,14 +493,13 @@ print("Podaj komendy: ")
 source = " "
 P = Parser(source)
 P.graphInit()
-with open("test.rabbit", "r") as f:
+with open(dojs, "r") as f:
 	for line in f:
 		v = line.split()
 		if line != "\n":
 			source = line
 			P.reInit(source)
 			P.parse()
-print(dec)
 
 while True:
 	source = input()
