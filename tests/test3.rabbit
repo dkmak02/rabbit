@@ -1,0 +1,8 @@
+bool xd true
+print xd
+xd !xd
+print xd
+bool xd2 4>5>6
+print xd2
+int dsa -2*2
+print dsa

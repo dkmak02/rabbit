@@ -1,0 +1,30 @@
+int dsa 2+2*2
+dsa 6
+int dsb 2+dsa*2+dsa
+dsa 20
+go 20+21/2+2*2+2/2
+sleep 1
+go dsb
+sleep 1
+angle 180
+go 200
+home
+go 200
+bool xd true
+bool xd2 4<3 or 3<4
+int dor 22+xd
+int ta 1+7*3+1
+int do 1+dor
+sleep 1
+home
+sleep 1
+go dor
+sleep 1
+home
+sleep 1
+go 3*dor
+sleep 1
+home
+sleep 1
+go 69
+print dor

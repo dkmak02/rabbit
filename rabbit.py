@@ -1,6 +1,5 @@
 import pygame
 import math
-
 WINDOWX    = 500
 WINDOWY    = 500
 
@@ -19,9 +18,6 @@ class Rabbit:
 		self.pointStart = []
 		self.pointEnd = []
 		self.lineColor = []
-
-
-
 	def draw(self, screen):
 		screen.blit(self.image, self.imageRect)
 	def setImage(self, image):
