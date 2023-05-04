@@ -5,6 +5,12 @@ import sys
 def calcValue(split_string, dict):
     split_string = split_string[0]
     split_string = re.split(r'([*/+-])', split_string)
+    for v in split_string:
+        if v in dict or v.isdigit():
+            continue
+        else:
+            print("Error: Variable not defined")
+            sys.exit()
     if split_string[0] == '':
         split_string[0] = '0'
     while '*' in split_string or '/' in split_string:
@@ -56,4 +62,8 @@ def calcValue(split_string, dict):
                     split_string[v1] = str(int(dsa) - int(dsa2))
                     split_string.pop(v2)
                     split_string.pop(operator)
+    if split_string[0] in dict:
+        if dict[split_string[0]]['type'] != 'int':
+            print("Error: Can't return non int value")
+            sys.exit()
     return split_string[0]

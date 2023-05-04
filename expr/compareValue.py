@@ -6,7 +6,6 @@ def compare(string, dict):
     if (len(split_string) == 1):
         if split_string[0] in dict:
             return dict[split_string[0]]['value']
-        print(split_string)
         if split_string[0] == 'true' or split_string[0] == 'True':
             return True
         if split_string[0] == 'false' or split_string[0] == 'False':
