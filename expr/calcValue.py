@@ -13,13 +13,14 @@ def calcValue(split_string, dict):
                 operator = split_string.index(v)
                 type = dict[split_string[operator - 1]]['type'] if split_string[operator - 1] in dict else 'int'
                 type2 = dict[split_string[operator + 1]]['type'] if split_string[operator + 1] in dict else 'int'
+                if type != 'int' or type2 != 'int':
+                    print("Error: Can't multiply or divide different types")
+                    sys.exit()
                 dsa = dict[split_string[operator - 1]]['value'][0] if split_string[operator - 1] in dict else split_string[
                     operator - 1]
                 dsa2 = dict[split_string[operator + 1]]['value'][0] if split_string[operator + 1] in dict else split_string[
                     operator + 1]
-                if type != 'int' or type2 != 'int':
-                    print("Error: Can't multiply or divide different types")
-                    sys.exit()
+
                 v1 = operator - 1
                 v2 = operator + 1
                 if v == '*':
@@ -37,15 +38,16 @@ def calcValue(split_string, dict):
                 operator = split_string.index(v)
                 type = dict[split_string[operator - 1]]['type'] if split_string[operator - 1] in dict else 'int'
                 type2 = dict[split_string[operator + 1]]['type'] if split_string[operator + 1] in dict else 'int'
+                if type != 'int' or type2 != 'int':
+                    print("Error: Can't add or subtract different types")
+                    sys.exit()
                 dsa = dict[split_string[operator - 1]]['value'][0] if split_string[operator - 1] in dict else split_string[
                     operator - 1]
                 dsa2 = dict[split_string[operator + 1]]['value'][0] if split_string[operator + 1] in dict else split_string[
                     operator + 1]
                 v1 = operator - 1
                 v2 = operator + 1
-                if type != 'int' or type2 != 'int':
-                    print("Error: Can't add or subtract different types")
-                    sys.exit()
+
                 if v == '+':
                     split_string[v1] = str(int(dsa) + int(dsa2))
                     split_string.pop(v2)
