@@ -10,6 +10,7 @@ int dsa 2+2*2
 dsa 6
 int dsb 2+dsa*2+dsa
 
+bool b7 False
 bool b7 dsb>=dsa
 
 int aa 90

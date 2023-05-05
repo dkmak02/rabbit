@@ -8,12 +8,15 @@ from antlr4.error.ErrorListener import ErrorListener, ConsoleErrorListener
 from rabbitLexer import rabbitLexer
 from rabbitParser import rabbitParser
 from rabbitVisitor import rabbitVisitor
+from rabbitListener import rabbitListener
 import re
 import commands.Commands as Commands
 import expr.calcValue as calcValue
 import expr.compareValue as compareValue
 import expr.logicalCompare as logicalCompare
+
 variables_dict = {}
+
 
 class MyVisitor(rabbitVisitor):
     def visitNumberExpr(self, ctx):
@@ -24,10 +27,12 @@ class MyVisitor(rabbitVisitor):
     def visitParenExpr(self, ctx):
         print(ctx.getText())
         return self.visit(ctx.expr())
+
     def visitBoolExpr(self, ctx):
         if 'and' in ctx or 'or' in ctx:
             return logicalCompare.compare(ctx, variables_dict)
         return compareValue.compare(ctx[0], variables_dict)
+
     def visitDeclarationExpr(self, ctx):
         val = ctx.getText().split(" ")
         type = val[0]
@@ -38,6 +43,7 @@ class MyVisitor(rabbitVisitor):
         elif type == 'bool':
             value = self.visitBoolExpr(value)
         variables_dict[name] = {"type": type, "value": value}
+
     def visitReassignment(self, ctx):
         val = ctx.getText().split(" ")
         name = val[0]
@@ -48,6 +54,7 @@ class MyVisitor(rabbitVisitor):
         elif type == 'bool':
             value = self.visitBoolExpr(value)
         variables_dict[name] = {"type": variables_dict[name]["type"], "value": value}
+
     def visitCommand(self, ctx):
         val = ctx.getText().split(" ")
         command = val[0]
@@ -80,21 +87,45 @@ class MyVisitor(rabbitVisitor):
                 Commands.printCommand(variables_dict, val)
         return (command, val)
 
-
     def visitInfiExpr(self, split_string):
         return calcValue.calcValue(split_string, variables_dict)
 
 
 if __name__ == "__main__":
-    while 1:
-        data = InputStream(input(">>> "))
-        # lexer
-        lexer = rabbitLexer(data)
-        stream = CommonTokenStream(lexer)
-        # parser
-        parser = rabbitParser(stream)
-        tree = parser.prog()
-        # evaluator
-        visitor = MyVisitor()
-        output = visitor.visit(tree)
-        print(output)
+    with open("tests/test.rabbit", "r") as f:
+        for line in f:
+            if line != "\n":
+                line = line.strip()
+                data = InputStream(line)
+                # lexer
+                lexer = rabbitLexer(data)
+                stream = CommonTokenStream(lexer)
+                # parser
+                parser = rabbitParser(stream)
+                listener = rabbitListener()
+                parser.addParseListener(listener)
+                try:
+                    _ = parser.prog()
+                except Exception as err:
+                    print(err)
+                    exit()
+
+
+        f.seek(0)
+        print('\n\n\n')
+
+        for line in f:
+            if line != "\n":
+                line = line.strip()
+                data = InputStream(line)
+                # lexer
+                lexer = rabbitLexer(data)
+                stream = CommonTokenStream(lexer)
+                # parser
+                parser = rabbitParser(stream)
+                tree = parser.prog()
+                # evaluator
+                visitor = MyVisitor()
+                output = visitor.visit(tree)
+                print(output)
+                print(variables_dict)
