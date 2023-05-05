@@ -55,6 +55,7 @@ class MyVisitor(rabbitVisitor):
         match command:
             case "go":
                 val = self.visitInfiExpr(val)
+                Commands.goCommand(int(val))
             case "home":
                 Commands.homeCommand()
             case "angle":
@@ -70,7 +71,7 @@ class MyVisitor(rabbitVisitor):
             case "setView":
                 Commands.setViewCommand()
             case "sleep":
-                Commands.sleepCommand()
+                Commands.sleepCommand(int(val[0]))
             case "if":
                 print("not implemented yet")
             case "for":

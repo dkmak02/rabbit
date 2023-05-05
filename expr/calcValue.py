@@ -22,11 +22,11 @@ def calcValue(split_string, dict):
                 if type != 'int' or type2 != 'int':
                     print("Error: Can't multiply or divide different types")
                     sys.exit()
-                dsa = dict[split_string[operator - 1]]['value'][0] if split_string[operator - 1] in dict else split_string[
+                dsa = dict[split_string[operator - 1]]['value'] if split_string[operator - 1] in dict else split_string[
                     operator - 1]
-                dsa2 = dict[split_string[operator + 1]]['value'][0] if split_string[operator + 1] in dict else split_string[
+                dsa2 = dict[split_string[operator + 1]]['value'] if split_string[operator + 1] in dict else split_string[
                     operator + 1]
-
+                print(dsa, dsa2)
                 v1 = operator - 1
                 v2 = operator + 1
                 if v == '*':
@@ -47,9 +47,9 @@ def calcValue(split_string, dict):
                 if type != 'int' or type2 != 'int':
                     print("Error: Can't add or subtract different types")
                     sys.exit()
-                dsa = dict[split_string[operator - 1]]['value'][0] if split_string[operator - 1] in dict else split_string[
+                dsa = dict[split_string[operator - 1]]['value'] if split_string[operator - 1] in dict else split_string[
                     operator - 1]
-                dsa2 = dict[split_string[operator + 1]]['value'][0] if split_string[operator + 1] in dict else split_string[
+                dsa2 = dict[split_string[operator + 1]]['value'] if split_string[operator + 1] in dict else split_string[
                     operator + 1]
                 v1 = operator - 1
                 v2 = operator + 1
@@ -66,4 +66,6 @@ def calcValue(split_string, dict):
         if dict[split_string[0]]['type'] != 'int':
             print("Error: Can't return non int value")
             sys.exit()
+        elif dict[split_string[0]]['type'] == 'int':
+            return dict[split_string[0]]['value']
     return split_string[0]
