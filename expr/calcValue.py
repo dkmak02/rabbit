@@ -6,7 +6,7 @@ def calcValue(split_string, dict):
     split_string = split_string[0]
     split_string = re.split(r'([*/+-])', split_string)
     for v in split_string:
-        if v in dict or v.isdigit():
+        if v in dict or v.isdigit() or v in ['*', '/', '+', '-']:
             continue
         else:
             print("Error: Variable not defined")

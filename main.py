@@ -38,6 +38,16 @@ class MyVisitor(rabbitVisitor):
         elif type == 'bool':
             value = self.visitBoolExpr(value)
         variables_dict[name] = {"type": type, "value": value}
+    def visitReassignment(self, ctx):
+        val = ctx.getText().split(" ")
+        name = val[0]
+        value = val[1:]
+        type = variables_dict[name]["type"]
+        if type == 'int':
+            value = self.visitInfiExpr(value)
+        elif type == 'bool':
+            value = self.visitBoolExpr(value)
+        variables_dict[name] = {"type": variables_dict[name]["type"], "value": value}
     def visitCommand(self, ctx):
         val = ctx.getText().split(" ")
         command = val[0]

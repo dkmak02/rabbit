@@ -38,8 +38,9 @@ comparison
    ;
 getX: 'getX';
 getY: 'getY';
-setValue: 'name ' expr|
-    'name ' (TRUE|FALSE);
+setValue: name ' ' expr|
+    name ' '  (TRUE|FALSE)|
+    name' ' comparison;
 
 angle: 'angle ' ('90'|'180'|'270'|'360');
 
