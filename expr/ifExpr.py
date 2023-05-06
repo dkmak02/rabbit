@@ -28,7 +28,6 @@ def todo(block):
                         todo.pop(k)
                     break
 
-
     return todo
 def ifcommand(condition,block, variables_dict,visitor, elseblock = None):
     if 'and' in condition or 'or' in condition:

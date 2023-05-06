@@ -1,8 +1,6 @@
 bool xd true
 print xd
-xd !xd
-print xd
-bool xd2 4>5>6
+bool xd2 true==false
 print xd2
-int dsa -2*2
-print dsa
+xd2 !xd
+print xd2

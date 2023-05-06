@@ -21,7 +21,10 @@ cmd: go #Command
    | sleep #Command
    | print #Command
    | restart #Command
+   | reverseBool #ReverseBoolVar
    ;
+
+reverseBool: name ' !'name;
 
 
 restart: 'reset';
@@ -37,7 +40,7 @@ comparison: expr comparisonOperator (expr | comparison) | '(' comparison ')' | v
 getX: 'getX';
 getY: 'getY';
 setValue: name ' ' expr|
-    name ' '  (TRUE|FALSE)|
+    name ' '  (TRUE|FALSE) |
     name' ' comparison;
 
 angle: 'angle ' ('90'|'180'|'270'|'360');

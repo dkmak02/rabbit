@@ -9,6 +9,9 @@ def calcValue(split_string, dict):
     else:
         split_string = split_string
     split_string = re.split(r'([*/+-])', split_string)
+    for i in range(len(split_string)):
+        if split_string[i] == '':
+            split_string[i] = '0'
     for v in split_string:
         if v in dict or v.isdigit() or v in ['*', '/', '+', '-']:
             continue

@@ -31,7 +31,6 @@ def todo(block):
     return todo
 def forcommand(iterator, block, variables_dict, visitor):
     comm = todo(block)
-    print(comm)
     for i in range(iterator):
         for j in comm:
             if '}' in j:
@@ -40,5 +39,4 @@ def forcommand(iterator, block, variables_dict, visitor):
                 else:
                     #replace { with i
                     j = j.replace('}', '')
-            print(j)
             visitFun.visitFun(j, visitor)

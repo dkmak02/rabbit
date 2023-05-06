@@ -112,10 +112,16 @@ class MyVisitor(rabbitVisitor):
 
     def visitInfiExpr(self, split_string):
         return calcValue.calcValue(split_string, variables_dict)
+    def visitReverseBoolVar(self, ctx):
+        val = ctx.getText().split(" ")
+        name = val[0]
+        val = val[1:]
+        val = val[0][1:]
+        variables_dict[name]["value"] = not variables_dict[name]["value"]
 
 
 if __name__ == "__main__":
-    with open("tests/fortest.rabbit", "r") as f:
+    with open("tests/test3.rabbit", "r") as f:
         for line in f:
             if line != "\n":
                 declarationCheck.declarationCheck(line)

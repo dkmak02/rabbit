@@ -10,79 +10,81 @@ else:
 
 def serializedATN():
     return [
-        4,1,50,213,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
+        4,1,51,220,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
         6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,
         2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,20,
         7,20,2,21,7,21,2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,2,26,7,26,
-        1,0,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-        1,1,1,1,1,1,1,1,1,1,1,1,3,1,77,8,1,1,2,1,2,1,3,1,3,1,3,1,4,1,4,1,
-        4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,3,4,99,8,4,1,5,
-        1,5,1,5,1,5,1,5,1,5,3,5,107,8,5,1,6,1,6,1,6,4,6,112,8,6,11,6,12,
-        6,113,4,6,116,8,6,11,6,12,6,117,1,6,1,6,1,7,1,7,1,7,1,7,1,7,1,8,
-        1,8,1,8,1,8,3,8,131,8,8,1,8,1,8,1,8,1,8,1,8,3,8,138,8,8,1,9,1,9,
-        1,10,1,10,1,11,1,11,1,11,1,11,1,11,1,11,1,11,1,11,1,11,1,11,1,11,
-        1,11,3,11,156,8,11,1,12,1,12,1,12,1,13,1,13,1,13,1,14,1,14,1,15,
-        1,15,1,16,1,16,1,17,1,17,1,18,1,18,1,19,1,19,1,19,1,19,1,19,1,20,
-        1,20,1,20,1,21,1,21,1,21,1,22,1,22,1,23,1,23,1,24,1,24,1,25,1,25,
-        1,25,1,25,1,25,3,25,196,8,25,1,26,1,26,1,26,1,26,3,26,202,8,26,1,
-        26,1,26,1,26,1,26,3,26,208,8,26,1,26,3,26,211,8,26,1,26,0,0,27,0,
-        2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,
-        48,50,52,0,5,1,0,45,46,1,0,17,20,1,0,31,38,1,0,39,40,1,0,41,42,222,
-        0,54,1,0,0,0,2,76,1,0,0,0,4,78,1,0,0,0,6,80,1,0,0,0,8,98,1,0,0,0,
-        10,100,1,0,0,0,12,108,1,0,0,0,14,121,1,0,0,0,16,137,1,0,0,0,18,139,
-        1,0,0,0,20,141,1,0,0,0,22,155,1,0,0,0,24,157,1,0,0,0,26,160,1,0,
-        0,0,28,163,1,0,0,0,30,165,1,0,0,0,32,167,1,0,0,0,34,169,1,0,0,0,
-        36,171,1,0,0,0,38,173,1,0,0,0,40,178,1,0,0,0,42,181,1,0,0,0,44,184,
-        1,0,0,0,46,186,1,0,0,0,48,188,1,0,0,0,50,195,1,0,0,0,52,210,1,0,
-        0,0,54,55,3,2,1,0,55,1,1,0,0,0,56,77,3,42,21,0,57,77,3,38,19,0,58,
-        77,3,44,22,0,59,77,3,24,12,0,60,77,3,26,13,0,61,77,3,14,7,0,62,77,
-        3,10,5,0,63,77,3,18,9,0,64,77,3,20,10,0,65,77,3,36,18,0,66,77,3,
-        34,17,0,67,77,3,32,16,0,68,77,3,30,15,0,69,77,3,28,14,0,70,77,3,
-        22,11,0,71,77,3,40,20,0,72,77,3,8,4,0,73,77,3,40,20,0,74,77,3,6,
-        3,0,75,77,3,4,2,0,76,56,1,0,0,0,76,57,1,0,0,0,76,58,1,0,0,0,76,59,
-        1,0,0,0,76,60,1,0,0,0,76,61,1,0,0,0,76,62,1,0,0,0,76,63,1,0,0,0,
-        76,64,1,0,0,0,76,65,1,0,0,0,76,66,1,0,0,0,76,67,1,0,0,0,76,68,1,
-        0,0,0,76,69,1,0,0,0,76,70,1,0,0,0,76,71,1,0,0,0,76,72,1,0,0,0,76,
-        73,1,0,0,0,76,74,1,0,0,0,76,75,1,0,0,0,77,3,1,0,0,0,78,79,5,1,0,
-        0,79,5,1,0,0,0,80,81,5,2,0,0,81,82,3,52,26,0,82,7,1,0,0,0,83,84,
-        5,3,0,0,84,85,3,48,24,0,85,86,5,4,0,0,86,87,3,52,26,0,87,99,1,0,
-        0,0,88,89,5,5,0,0,89,90,3,48,24,0,90,91,5,4,0,0,91,92,7,0,0,0,92,
-        99,1,0,0,0,93,94,5,5,0,0,94,95,3,48,24,0,95,96,5,4,0,0,96,97,3,16,
-        8,0,97,99,1,0,0,0,98,83,1,0,0,0,98,88,1,0,0,0,98,93,1,0,0,0,99,9,
-        1,0,0,0,100,101,5,6,0,0,101,102,3,16,8,0,102,103,5,7,0,0,103,106,
-        3,12,6,0,104,105,5,8,0,0,105,107,3,12,6,0,106,104,1,0,0,0,106,107,
-        1,0,0,0,107,11,1,0,0,0,108,115,5,9,0,0,109,111,3,2,1,0,110,112,5,
-        4,0,0,111,110,1,0,0,0,112,113,1,0,0,0,113,111,1,0,0,0,113,114,1,
-        0,0,0,114,116,1,0,0,0,115,109,1,0,0,0,116,117,1,0,0,0,117,115,1,
-        0,0,0,117,118,1,0,0,0,118,119,1,0,0,0,119,120,5,10,0,0,120,13,1,
-        0,0,0,121,122,5,11,0,0,122,123,3,52,26,0,123,124,5,4,0,0,124,125,
-        3,12,6,0,125,15,1,0,0,0,126,127,3,52,26,0,127,130,3,46,23,0,128,
-        131,3,52,26,0,129,131,3,16,8,0,130,128,1,0,0,0,130,129,1,0,0,0,131,
-        138,1,0,0,0,132,133,5,12,0,0,133,134,3,16,8,0,134,135,5,13,0,0,135,
-        138,1,0,0,0,136,138,3,50,25,0,137,126,1,0,0,0,137,132,1,0,0,0,137,
-        136,1,0,0,0,138,17,1,0,0,0,139,140,5,14,0,0,140,19,1,0,0,0,141,142,
-        5,15,0,0,142,21,1,0,0,0,143,144,3,48,24,0,144,145,5,4,0,0,145,146,
-        3,52,26,0,146,156,1,0,0,0,147,148,3,48,24,0,148,149,5,4,0,0,149,
-        150,7,0,0,0,150,156,1,0,0,0,151,152,3,48,24,0,152,153,5,4,0,0,153,
-        154,3,16,8,0,154,156,1,0,0,0,155,143,1,0,0,0,155,147,1,0,0,0,155,
-        151,1,0,0,0,156,23,1,0,0,0,157,158,5,16,0,0,158,159,7,1,0,0,159,
-        25,1,0,0,0,160,161,5,21,0,0,161,162,5,43,0,0,162,27,1,0,0,0,163,
-        164,5,22,0,0,164,29,1,0,0,0,165,166,5,23,0,0,166,31,1,0,0,0,167,
-        168,5,24,0,0,168,33,1,0,0,0,169,170,5,25,0,0,170,35,1,0,0,0,171,
-        172,5,26,0,0,172,37,1,0,0,0,173,174,5,27,0,0,174,175,3,52,26,0,175,
-        176,5,4,0,0,176,177,3,52,26,0,177,39,1,0,0,0,178,179,5,28,0,0,179,
-        180,3,52,26,0,180,41,1,0,0,0,181,182,5,29,0,0,182,183,3,52,26,0,
-        183,43,1,0,0,0,184,185,5,30,0,0,185,45,1,0,0,0,186,187,7,2,0,0,187,
-        47,1,0,0,0,188,189,5,47,0,0,189,49,1,0,0,0,190,196,5,44,0,0,191,
-        196,5,45,0,0,192,196,5,46,0,0,193,196,3,48,24,0,194,196,7,1,0,0,
-        195,190,1,0,0,0,195,191,1,0,0,0,195,192,1,0,0,0,195,193,1,0,0,0,
-        195,194,1,0,0,0,196,51,1,0,0,0,197,198,3,50,25,0,198,201,7,3,0,0,
-        199,202,3,50,25,0,200,202,3,52,26,0,201,199,1,0,0,0,201,200,1,0,
-        0,0,202,211,1,0,0,0,203,204,3,50,25,0,204,207,7,4,0,0,205,208,3,
-        50,25,0,206,208,3,52,26,0,207,205,1,0,0,0,207,206,1,0,0,0,208,211,
-        1,0,0,0,209,211,3,50,25,0,210,197,1,0,0,0,210,203,1,0,0,0,210,209,
-        1,0,0,0,211,53,1,0,0,0,12,76,98,106,113,117,130,137,155,195,201,
-        207,210
+        2,27,7,27,1,0,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+        1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,1,80,8,1,1,2,1,2,1,2,1,2,
+        1,3,1,3,1,4,1,4,1,4,1,5,1,5,1,5,1,5,1,5,1,5,1,5,1,5,1,5,1,5,1,5,
+        1,5,1,5,1,5,1,5,3,5,106,8,5,1,6,1,6,1,6,1,6,1,6,1,6,3,6,114,8,6,
+        1,7,1,7,1,7,4,7,119,8,7,11,7,12,7,120,4,7,123,8,7,11,7,12,7,124,
+        1,7,1,7,1,8,1,8,1,8,1,8,1,8,1,9,1,9,1,9,1,9,3,9,138,8,9,1,9,1,9,
+        1,9,1,9,1,9,3,9,145,8,9,1,10,1,10,1,11,1,11,1,12,1,12,1,12,1,12,
+        1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,3,12,163,8,12,1,13,1,13,
+        1,13,1,14,1,14,1,14,1,15,1,15,1,16,1,16,1,17,1,17,1,18,1,18,1,19,
+        1,19,1,20,1,20,1,20,1,20,1,20,1,21,1,21,1,21,1,22,1,22,1,22,1,23,
+        1,23,1,24,1,24,1,25,1,25,1,26,1,26,1,26,1,26,1,26,3,26,203,8,26,
+        1,27,1,27,1,27,1,27,3,27,209,8,27,1,27,1,27,1,27,1,27,3,27,215,8,
+        27,1,27,3,27,218,8,27,1,27,0,0,28,0,2,4,6,8,10,12,14,16,18,20,22,
+        24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,0,5,1,0,46,47,1,
+        0,18,21,1,0,32,39,1,0,40,41,1,0,42,43,229,0,56,1,0,0,0,2,79,1,0,
+        0,0,4,81,1,0,0,0,6,85,1,0,0,0,8,87,1,0,0,0,10,105,1,0,0,0,12,107,
+        1,0,0,0,14,115,1,0,0,0,16,128,1,0,0,0,18,144,1,0,0,0,20,146,1,0,
+        0,0,22,148,1,0,0,0,24,162,1,0,0,0,26,164,1,0,0,0,28,167,1,0,0,0,
+        30,170,1,0,0,0,32,172,1,0,0,0,34,174,1,0,0,0,36,176,1,0,0,0,38,178,
+        1,0,0,0,40,180,1,0,0,0,42,185,1,0,0,0,44,188,1,0,0,0,46,191,1,0,
+        0,0,48,193,1,0,0,0,50,195,1,0,0,0,52,202,1,0,0,0,54,217,1,0,0,0,
+        56,57,3,2,1,0,57,1,1,0,0,0,58,80,3,44,22,0,59,80,3,40,20,0,60,80,
+        3,46,23,0,61,80,3,26,13,0,62,80,3,28,14,0,63,80,3,16,8,0,64,80,3,
+        12,6,0,65,80,3,20,10,0,66,80,3,22,11,0,67,80,3,38,19,0,68,80,3,36,
+        18,0,69,80,3,34,17,0,70,80,3,32,16,0,71,80,3,30,15,0,72,80,3,24,
+        12,0,73,80,3,42,21,0,74,80,3,10,5,0,75,80,3,42,21,0,76,80,3,8,4,
+        0,77,80,3,6,3,0,78,80,3,4,2,0,79,58,1,0,0,0,79,59,1,0,0,0,79,60,
+        1,0,0,0,79,61,1,0,0,0,79,62,1,0,0,0,79,63,1,0,0,0,79,64,1,0,0,0,
+        79,65,1,0,0,0,79,66,1,0,0,0,79,67,1,0,0,0,79,68,1,0,0,0,79,69,1,
+        0,0,0,79,70,1,0,0,0,79,71,1,0,0,0,79,72,1,0,0,0,79,73,1,0,0,0,79,
+        74,1,0,0,0,79,75,1,0,0,0,79,76,1,0,0,0,79,77,1,0,0,0,79,78,1,0,0,
+        0,80,3,1,0,0,0,81,82,3,50,25,0,82,83,5,1,0,0,83,84,3,50,25,0,84,
+        5,1,0,0,0,85,86,5,2,0,0,86,7,1,0,0,0,87,88,5,3,0,0,88,89,3,54,27,
+        0,89,9,1,0,0,0,90,91,5,4,0,0,91,92,3,50,25,0,92,93,5,5,0,0,93,94,
+        3,54,27,0,94,106,1,0,0,0,95,96,5,6,0,0,96,97,3,50,25,0,97,98,5,5,
+        0,0,98,99,7,0,0,0,99,106,1,0,0,0,100,101,5,6,0,0,101,102,3,50,25,
+        0,102,103,5,5,0,0,103,104,3,18,9,0,104,106,1,0,0,0,105,90,1,0,0,
+        0,105,95,1,0,0,0,105,100,1,0,0,0,106,11,1,0,0,0,107,108,5,7,0,0,
+        108,109,3,18,9,0,109,110,5,8,0,0,110,113,3,14,7,0,111,112,5,9,0,
+        0,112,114,3,14,7,0,113,111,1,0,0,0,113,114,1,0,0,0,114,13,1,0,0,
+        0,115,122,5,10,0,0,116,118,3,2,1,0,117,119,5,5,0,0,118,117,1,0,0,
+        0,119,120,1,0,0,0,120,118,1,0,0,0,120,121,1,0,0,0,121,123,1,0,0,
+        0,122,116,1,0,0,0,123,124,1,0,0,0,124,122,1,0,0,0,124,125,1,0,0,
+        0,125,126,1,0,0,0,126,127,5,11,0,0,127,15,1,0,0,0,128,129,5,12,0,
+        0,129,130,3,54,27,0,130,131,5,5,0,0,131,132,3,14,7,0,132,17,1,0,
+        0,0,133,134,3,54,27,0,134,137,3,48,24,0,135,138,3,54,27,0,136,138,
+        3,18,9,0,137,135,1,0,0,0,137,136,1,0,0,0,138,145,1,0,0,0,139,140,
+        5,13,0,0,140,141,3,18,9,0,141,142,5,14,0,0,142,145,1,0,0,0,143,145,
+        3,52,26,0,144,133,1,0,0,0,144,139,1,0,0,0,144,143,1,0,0,0,145,19,
+        1,0,0,0,146,147,5,15,0,0,147,21,1,0,0,0,148,149,5,16,0,0,149,23,
+        1,0,0,0,150,151,3,50,25,0,151,152,5,5,0,0,152,153,3,54,27,0,153,
+        163,1,0,0,0,154,155,3,50,25,0,155,156,5,5,0,0,156,157,7,0,0,0,157,
+        163,1,0,0,0,158,159,3,50,25,0,159,160,5,5,0,0,160,161,3,18,9,0,161,
+        163,1,0,0,0,162,150,1,0,0,0,162,154,1,0,0,0,162,158,1,0,0,0,163,
+        25,1,0,0,0,164,165,5,17,0,0,165,166,7,1,0,0,166,27,1,0,0,0,167,168,
+        5,22,0,0,168,169,5,44,0,0,169,29,1,0,0,0,170,171,5,23,0,0,171,31,
+        1,0,0,0,172,173,5,24,0,0,173,33,1,0,0,0,174,175,5,25,0,0,175,35,
+        1,0,0,0,176,177,5,26,0,0,177,37,1,0,0,0,178,179,5,27,0,0,179,39,
+        1,0,0,0,180,181,5,28,0,0,181,182,3,54,27,0,182,183,5,5,0,0,183,184,
+        3,54,27,0,184,41,1,0,0,0,185,186,5,29,0,0,186,187,3,54,27,0,187,
+        43,1,0,0,0,188,189,5,30,0,0,189,190,3,54,27,0,190,45,1,0,0,0,191,
+        192,5,31,0,0,192,47,1,0,0,0,193,194,7,2,0,0,194,49,1,0,0,0,195,196,
+        5,48,0,0,196,51,1,0,0,0,197,203,5,45,0,0,198,203,5,46,0,0,199,203,
+        5,47,0,0,200,203,3,50,25,0,201,203,7,1,0,0,202,197,1,0,0,0,202,198,
+        1,0,0,0,202,199,1,0,0,0,202,200,1,0,0,0,202,201,1,0,0,0,203,53,1,
+        0,0,0,204,205,3,52,26,0,205,208,7,3,0,0,206,209,3,52,26,0,207,209,
+        3,54,27,0,208,206,1,0,0,0,208,207,1,0,0,0,209,218,1,0,0,0,210,211,
+        3,52,26,0,211,214,7,4,0,0,212,215,3,52,26,0,213,215,3,54,27,0,214,
+        212,1,0,0,0,214,213,1,0,0,0,215,218,1,0,0,0,216,218,3,52,26,0,217,
+        204,1,0,0,0,217,210,1,0,0,0,217,216,1,0,0,0,218,55,1,0,0,0,12,79,
+        105,113,120,124,137,144,162,202,208,214,217
     ]
 
 class rabbitParser ( Parser ):
@@ -95,14 +97,14 @@ class rabbitParser ( Parser ):
 
     sharedContextCache = PredictionContextCache()
 
-    literalNames = [ "<INVALID>", "'reset'", "'print '", "'int '", "' '", 
-                     "'bool '", "'if '", "' ? '", "' else '", "'{ '", "'}'", 
-                     "'for '", "'('", "')'", "'getX'", "'getY'", "'angle '", 
-                     "'90'", "'180'", "'270'", "'360'", "'setview '", "'spaceLeft'", 
-                     "'checkField'", "'putItem'", "'getItem'", "'getAngle'", 
-                     "'jump '", "'sleep '", "'go '", "'home'", "'<'", "'>'", 
-                     "'=='", "'!='", "'<='", "'>='", "' and '", "' or '", 
-                     "'*'", "'/'", "'+'", "'-'" ]
+    literalNames = [ "<INVALID>", "' !'", "'reset'", "'print '", "'int '", 
+                     "' '", "'bool '", "'if '", "' ? '", "' else '", "'{ '", 
+                     "'}'", "'for '", "'('", "')'", "'getX'", "'getY'", 
+                     "'angle '", "'90'", "'180'", "'270'", "'360'", "'setview '", 
+                     "'spaceLeft'", "'checkField'", "'putItem'", "'getItem'", 
+                     "'getAngle'", "'jump '", "'sleep '", "'go '", "'home'", 
+                     "'<'", "'>'", "'=='", "'!='", "'<='", "'>='", "' and '", 
+                     "' or '", "'*'", "'/'", "'+'", "'-'" ]
 
     symbolicNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
@@ -114,39 +116,41 @@ class rabbitParser ( Parser ):
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "<INVALID>", "KATY", "INT", 
-                      "TRUE", "FALSE", "STRING", "WS", "TAB", "NEWLINE" ]
+                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                      "KATY", "INT", "TRUE", "FALSE", "STRING", "WS", "TAB", 
+                      "NEWLINE" ]
 
     RULE_prog = 0
     RULE_cmd = 1
-    RULE_restart = 2
-    RULE_print = 3
-    RULE_declaration = 4
-    RULE_if = 5
-    RULE_block = 6
-    RULE_for = 7
-    RULE_comparison = 8
-    RULE_getX = 9
-    RULE_getY = 10
-    RULE_setValue = 11
-    RULE_angle = 12
-    RULE_setView = 13
-    RULE_spaceLeft = 14
-    RULE_checkField = 15
-    RULE_putItem = 16
-    RULE_getItem = 17
-    RULE_getAngle = 18
-    RULE_jump = 19
-    RULE_sleep = 20
-    RULE_go = 21
-    RULE_home = 22
-    RULE_comparisonOperator = 23
-    RULE_name = 24
-    RULE_value = 25
-    RULE_expr = 26
+    RULE_reverseBool = 2
+    RULE_restart = 3
+    RULE_print = 4
+    RULE_declaration = 5
+    RULE_if = 6
+    RULE_block = 7
+    RULE_for = 8
+    RULE_comparison = 9
+    RULE_getX = 10
+    RULE_getY = 11
+    RULE_setValue = 12
+    RULE_angle = 13
+    RULE_setView = 14
+    RULE_spaceLeft = 15
+    RULE_checkField = 16
+    RULE_putItem = 17
+    RULE_getItem = 18
+    RULE_getAngle = 19
+    RULE_jump = 20
+    RULE_sleep = 21
+    RULE_go = 22
+    RULE_home = 23
+    RULE_comparisonOperator = 24
+    RULE_name = 25
+    RULE_value = 26
+    RULE_expr = 27
 
-    ruleNames =  [ "prog", "cmd", "restart", "print", "declaration", "if", 
-                   "block", "for", "comparison", "getX", "getY", "setValue", 
+    ruleNames =  [ "prog", "cmd", "reverseBool", "restart", "print", "declaration", 
+                   "if", "block", "for", "comparison", "getX", "getY", "setValue", 
                    "angle", "setView", "spaceLeft", "checkField", "putItem", 
                    "getItem", "getAngle", "jump", "sleep", "go", "home", 
                    "comparisonOperator", "name", "value", "expr" ]
@@ -194,14 +198,15 @@ class rabbitParser ( Parser ):
     T__39=40
     T__40=41
     T__41=42
-    KATY=43
-    INT=44
-    TRUE=45
-    FALSE=46
-    STRING=47
-    WS=48
-    TAB=49
-    NEWLINE=50
+    T__42=43
+    KATY=44
+    INT=45
+    TRUE=46
+    FALSE=47
+    STRING=48
+    WS=49
+    TAB=50
+    NEWLINE=51
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
@@ -249,7 +254,7 @@ class rabbitParser ( Parser ):
         self.enterRule(localctx, 0, self.RULE_prog)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 54
+            self.state = 56
             self.cmd()
         except RecognitionException as re:
             localctx.exception = re
@@ -419,6 +424,31 @@ class rabbitParser ( Parser ):
                 return visitor.visitChildren(self)
 
 
+    class ReverseBoolVarContext(CmdContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a rabbitParser.CmdContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def reverseBool(self):
+            return self.getTypedRuleContext(rabbitParser.ReverseBoolContext,0)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterReverseBoolVar" ):
+                listener.enterReverseBoolVar(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitReverseBoolVar" ):
+                listener.exitReverseBoolVar(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitReverseBoolVar" ):
+                return visitor.visitReverseBoolVar(self)
+            else:
+                return visitor.visitChildren(self)
+
+
     class DeclarationExprContext(CmdContext):
 
         def __init__(self, parser, ctx:ParserRuleContext): # actually a rabbitParser.CmdContext
@@ -450,150 +480,212 @@ class rabbitParser ( Parser ):
         localctx = rabbitParser.CmdContext(self, self._ctx, self.state)
         self.enterRule(localctx, 2, self.RULE_cmd)
         try:
-            self.state = 76
+            self.state = 79
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,0,self._ctx)
             if la_ == 1:
                 localctx = rabbitParser.CommandContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 56
+                self.state = 58
                 self.go()
                 pass
 
             elif la_ == 2:
                 localctx = rabbitParser.CommandContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 57
+                self.state = 59
                 self.jump()
                 pass
 
             elif la_ == 3:
                 localctx = rabbitParser.CommandContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
-                self.state = 58
+                self.state = 60
                 self.home()
                 pass
 
             elif la_ == 4:
                 localctx = rabbitParser.CommandContext(self, localctx)
                 self.enterOuterAlt(localctx, 4)
-                self.state = 59
+                self.state = 61
                 self.angle()
                 pass
 
             elif la_ == 5:
                 localctx = rabbitParser.CommandContext(self, localctx)
                 self.enterOuterAlt(localctx, 5)
-                self.state = 60
+                self.state = 62
                 self.setView()
                 pass
 
             elif la_ == 6:
                 localctx = rabbitParser.ForBlockContext(self, localctx)
                 self.enterOuterAlt(localctx, 6)
-                self.state = 61
+                self.state = 63
                 self.for_()
                 pass
 
             elif la_ == 7:
                 localctx = rabbitParser.IfBlockContext(self, localctx)
                 self.enterOuterAlt(localctx, 7)
-                self.state = 62
+                self.state = 64
                 self.if_()
                 pass
 
             elif la_ == 8:
                 localctx = rabbitParser.CommandContext(self, localctx)
                 self.enterOuterAlt(localctx, 8)
-                self.state = 63
+                self.state = 65
                 self.getX()
                 pass
 
             elif la_ == 9:
                 localctx = rabbitParser.CommandContext(self, localctx)
                 self.enterOuterAlt(localctx, 9)
-                self.state = 64
+                self.state = 66
                 self.getY()
                 pass
 
             elif la_ == 10:
                 localctx = rabbitParser.CommandContext(self, localctx)
                 self.enterOuterAlt(localctx, 10)
-                self.state = 65
+                self.state = 67
                 self.getAngle()
                 pass
 
             elif la_ == 11:
                 localctx = rabbitParser.CommandContext(self, localctx)
                 self.enterOuterAlt(localctx, 11)
-                self.state = 66
+                self.state = 68
                 self.getItem()
                 pass
 
             elif la_ == 12:
                 localctx = rabbitParser.CommandContext(self, localctx)
                 self.enterOuterAlt(localctx, 12)
-                self.state = 67
+                self.state = 69
                 self.putItem()
                 pass
 
             elif la_ == 13:
                 localctx = rabbitParser.CommandContext(self, localctx)
                 self.enterOuterAlt(localctx, 13)
-                self.state = 68
+                self.state = 70
                 self.checkField()
                 pass
 
             elif la_ == 14:
                 localctx = rabbitParser.CommandContext(self, localctx)
                 self.enterOuterAlt(localctx, 14)
-                self.state = 69
+                self.state = 71
                 self.spaceLeft()
                 pass
 
             elif la_ == 15:
                 localctx = rabbitParser.ReassignmentContext(self, localctx)
                 self.enterOuterAlt(localctx, 15)
-                self.state = 70
+                self.state = 72
                 self.setValue()
                 pass
 
             elif la_ == 16:
                 localctx = rabbitParser.CommandContext(self, localctx)
                 self.enterOuterAlt(localctx, 16)
-                self.state = 71
+                self.state = 73
                 self.sleep()
                 pass
 
             elif la_ == 17:
                 localctx = rabbitParser.DeclarationExprContext(self, localctx)
                 self.enterOuterAlt(localctx, 17)
-                self.state = 72
+                self.state = 74
                 self.declaration()
                 pass
 
             elif la_ == 18:
                 localctx = rabbitParser.CommandContext(self, localctx)
                 self.enterOuterAlt(localctx, 18)
-                self.state = 73
+                self.state = 75
                 self.sleep()
                 pass
 
             elif la_ == 19:
                 localctx = rabbitParser.CommandContext(self, localctx)
                 self.enterOuterAlt(localctx, 19)
-                self.state = 74
+                self.state = 76
                 self.print_()
                 pass
 
             elif la_ == 20:
                 localctx = rabbitParser.CommandContext(self, localctx)
                 self.enterOuterAlt(localctx, 20)
-                self.state = 75
+                self.state = 77
                 self.restart()
                 pass
 
+            elif la_ == 21:
+                localctx = rabbitParser.ReverseBoolVarContext(self, localctx)
+                self.enterOuterAlt(localctx, 21)
+                self.state = 78
+                self.reverseBool()
+                pass
 
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class ReverseBoolContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def name(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(rabbitParser.NameContext)
+            else:
+                return self.getTypedRuleContext(rabbitParser.NameContext,i)
+
+
+        def getRuleIndex(self):
+            return rabbitParser.RULE_reverseBool
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterReverseBool" ):
+                listener.enterReverseBool(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitReverseBool" ):
+                listener.exitReverseBool(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitReverseBool" ):
+                return visitor.visitReverseBool(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def reverseBool(self):
+
+        localctx = rabbitParser.ReverseBoolContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 4, self.RULE_reverseBool)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 81
+            self.name()
+            self.state = 82
+            self.match(rabbitParser.T__0)
+            self.state = 83
+            self.name()
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -634,11 +726,11 @@ class rabbitParser ( Parser ):
     def restart(self):
 
         localctx = rabbitParser.RestartContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 4, self.RULE_restart)
+        self.enterRule(localctx, 6, self.RULE_restart)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 78
-            self.match(rabbitParser.T__0)
+            self.state = 85
+            self.match(rabbitParser.T__1)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -682,12 +774,12 @@ class rabbitParser ( Parser ):
     def print_(self):
 
         localctx = rabbitParser.PrintContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 6, self.RULE_print)
+        self.enterRule(localctx, 8, self.RULE_print)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 80
-            self.match(rabbitParser.T__1)
-            self.state = 81
+            self.state = 87
+            self.match(rabbitParser.T__2)
+            self.state = 88
             self.expr()
         except RecognitionException as re:
             localctx.exception = re
@@ -746,35 +838,35 @@ class rabbitParser ( Parser ):
     def declaration(self):
 
         localctx = rabbitParser.DeclarationContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 8, self.RULE_declaration)
+        self.enterRule(localctx, 10, self.RULE_declaration)
         self._la = 0 # Token type
         try:
-            self.state = 98
+            self.state = 105
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,1,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 83
-                self.match(rabbitParser.T__2)
-                self.state = 84
-                self.name()
-                self.state = 85
+                self.state = 90
                 self.match(rabbitParser.T__3)
-                self.state = 86
+                self.state = 91
+                self.name()
+                self.state = 92
+                self.match(rabbitParser.T__4)
+                self.state = 93
                 self.expr()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 88
-                self.match(rabbitParser.T__4)
-                self.state = 89
+                self.state = 95
+                self.match(rabbitParser.T__5)
+                self.state = 96
                 self.name()
-                self.state = 90
-                self.match(rabbitParser.T__3)
-                self.state = 91
+                self.state = 97
+                self.match(rabbitParser.T__4)
+                self.state = 98
                 _la = self._input.LA(1)
-                if not(_la==45 or _la==46):
+                if not(_la==46 or _la==47):
                     self._errHandler.recoverInline(self)
                 else:
                     self._errHandler.reportMatch(self)
@@ -783,13 +875,13 @@ class rabbitParser ( Parser ):
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 93
-                self.match(rabbitParser.T__4)
-                self.state = 94
+                self.state = 100
+                self.match(rabbitParser.T__5)
+                self.state = 101
                 self.name()
-                self.state = 95
-                self.match(rabbitParser.T__3)
-                self.state = 96
+                self.state = 102
+                self.match(rabbitParser.T__4)
+                self.state = 103
                 self.comparison()
                 pass
 
@@ -844,25 +936,25 @@ class rabbitParser ( Parser ):
     def if_(self):
 
         localctx = rabbitParser.IfContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 10, self.RULE_if)
+        self.enterRule(localctx, 12, self.RULE_if)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 100
-            self.match(rabbitParser.T__5)
-            self.state = 101
-            self.comparison()
-            self.state = 102
+            self.state = 107
             self.match(rabbitParser.T__6)
-            self.state = 103
+            self.state = 108
+            self.comparison()
+            self.state = 109
+            self.match(rabbitParser.T__7)
+            self.state = 110
             self.block()
-            self.state = 106
+            self.state = 113
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==8:
-                self.state = 104
-                self.match(rabbitParser.T__7)
-                self.state = 105
+            if _la==9:
+                self.state = 111
+                self.match(rabbitParser.T__8)
+                self.state = 112
                 self.block()
 
 
@@ -912,38 +1004,38 @@ class rabbitParser ( Parser ):
     def block(self):
 
         localctx = rabbitParser.BlockContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 12, self.RULE_block)
+        self.enterRule(localctx, 14, self.RULE_block)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 108
-            self.match(rabbitParser.T__8)
-            self.state = 115 
+            self.state = 115
+            self.match(rabbitParser.T__9)
+            self.state = 122 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 109
+                self.state = 116
                 self.cmd()
-                self.state = 111 
+                self.state = 118 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while True:
-                    self.state = 110
-                    self.match(rabbitParser.T__3)
-                    self.state = 113 
+                    self.state = 117
+                    self.match(rabbitParser.T__4)
+                    self.state = 120 
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
-                    if not (_la==4):
+                    if not (_la==5):
                         break
 
-                self.state = 117 
+                self.state = 124 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & 140739633858670) != 0)):
+                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & 281479267717340) != 0)):
                     break
 
-            self.state = 119
-            self.match(rabbitParser.T__9)
+            self.state = 126
+            self.match(rabbitParser.T__10)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -991,16 +1083,16 @@ class rabbitParser ( Parser ):
     def for_(self):
 
         localctx = rabbitParser.ForContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 14, self.RULE_for)
+        self.enterRule(localctx, 16, self.RULE_for)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 121
-            self.match(rabbitParser.T__10)
-            self.state = 122
+            self.state = 128
+            self.match(rabbitParser.T__11)
+            self.state = 129
             self.expr()
-            self.state = 123
-            self.match(rabbitParser.T__3)
-            self.state = 124
+            self.state = 130
+            self.match(rabbitParser.T__4)
+            self.state = 131
             self.block()
         except RecognitionException as re:
             localctx.exception = re
@@ -1060,27 +1152,27 @@ class rabbitParser ( Parser ):
     def comparison(self):
 
         localctx = rabbitParser.ComparisonContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 16, self.RULE_comparison)
+        self.enterRule(localctx, 18, self.RULE_comparison)
         try:
-            self.state = 137
+            self.state = 144
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,6,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 126
+                self.state = 133
                 self.expr()
-                self.state = 127
+                self.state = 134
                 self.comparisonOperator()
-                self.state = 130
+                self.state = 137
                 self._errHandler.sync(self)
                 la_ = self._interp.adaptivePredict(self._input,5,self._ctx)
                 if la_ == 1:
-                    self.state = 128
+                    self.state = 135
                     self.expr()
                     pass
 
                 elif la_ == 2:
-                    self.state = 129
+                    self.state = 136
                     self.comparison()
                     pass
 
@@ -1089,17 +1181,17 @@ class rabbitParser ( Parser ):
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 132
-                self.match(rabbitParser.T__11)
-                self.state = 133
-                self.comparison()
-                self.state = 134
+                self.state = 139
                 self.match(rabbitParser.T__12)
+                self.state = 140
+                self.comparison()
+                self.state = 141
+                self.match(rabbitParser.T__13)
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 136
+                self.state = 143
                 self.value()
                 pass
 
@@ -1144,11 +1236,11 @@ class rabbitParser ( Parser ):
     def getX(self):
 
         localctx = rabbitParser.GetXContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 18, self.RULE_getX)
+        self.enterRule(localctx, 20, self.RULE_getX)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 139
-            self.match(rabbitParser.T__13)
+            self.state = 146
+            self.match(rabbitParser.T__14)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1189,11 +1281,11 @@ class rabbitParser ( Parser ):
     def getY(self):
 
         localctx = rabbitParser.GetYContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 20, self.RULE_getY)
+        self.enterRule(localctx, 22, self.RULE_getY)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 141
-            self.match(rabbitParser.T__14)
+            self.state = 148
+            self.match(rabbitParser.T__15)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1251,31 +1343,31 @@ class rabbitParser ( Parser ):
     def setValue(self):
 
         localctx = rabbitParser.SetValueContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 22, self.RULE_setValue)
+        self.enterRule(localctx, 24, self.RULE_setValue)
         self._la = 0 # Token type
         try:
-            self.state = 155
+            self.state = 162
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,7,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 143
+                self.state = 150
                 self.name()
-                self.state = 144
-                self.match(rabbitParser.T__3)
-                self.state = 145
+                self.state = 151
+                self.match(rabbitParser.T__4)
+                self.state = 152
                 self.expr()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 147
+                self.state = 154
                 self.name()
-                self.state = 148
-                self.match(rabbitParser.T__3)
-                self.state = 149
+                self.state = 155
+                self.match(rabbitParser.T__4)
+                self.state = 156
                 _la = self._input.LA(1)
-                if not(_la==45 or _la==46):
+                if not(_la==46 or _la==47):
                     self._errHandler.recoverInline(self)
                 else:
                     self._errHandler.reportMatch(self)
@@ -1284,11 +1376,11 @@ class rabbitParser ( Parser ):
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 151
+                self.state = 158
                 self.name()
-                self.state = 152
-                self.match(rabbitParser.T__3)
-                self.state = 153
+                self.state = 159
+                self.match(rabbitParser.T__4)
+                self.state = 160
                 self.comparison()
                 pass
 
@@ -1333,15 +1425,15 @@ class rabbitParser ( Parser ):
     def angle(self):
 
         localctx = rabbitParser.AngleContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 24, self.RULE_angle)
+        self.enterRule(localctx, 26, self.RULE_angle)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 157
-            self.match(rabbitParser.T__15)
-            self.state = 158
+            self.state = 164
+            self.match(rabbitParser.T__16)
+            self.state = 165
             _la = self._input.LA(1)
-            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 1966080) != 0)):
+            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 3932160) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -1388,12 +1480,12 @@ class rabbitParser ( Parser ):
     def setView(self):
 
         localctx = rabbitParser.SetViewContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 26, self.RULE_setView)
+        self.enterRule(localctx, 28, self.RULE_setView)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 160
-            self.match(rabbitParser.T__20)
-            self.state = 161
+            self.state = 167
+            self.match(rabbitParser.T__21)
+            self.state = 168
             self.match(rabbitParser.KATY)
         except RecognitionException as re:
             localctx.exception = re
@@ -1435,11 +1527,11 @@ class rabbitParser ( Parser ):
     def spaceLeft(self):
 
         localctx = rabbitParser.SpaceLeftContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 28, self.RULE_spaceLeft)
+        self.enterRule(localctx, 30, self.RULE_spaceLeft)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 163
-            self.match(rabbitParser.T__21)
+            self.state = 170
+            self.match(rabbitParser.T__22)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1480,11 +1572,11 @@ class rabbitParser ( Parser ):
     def checkField(self):
 
         localctx = rabbitParser.CheckFieldContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 30, self.RULE_checkField)
+        self.enterRule(localctx, 32, self.RULE_checkField)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 165
-            self.match(rabbitParser.T__22)
+            self.state = 172
+            self.match(rabbitParser.T__23)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1525,11 +1617,11 @@ class rabbitParser ( Parser ):
     def putItem(self):
 
         localctx = rabbitParser.PutItemContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 32, self.RULE_putItem)
+        self.enterRule(localctx, 34, self.RULE_putItem)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 167
-            self.match(rabbitParser.T__23)
+            self.state = 174
+            self.match(rabbitParser.T__24)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1570,11 +1662,11 @@ class rabbitParser ( Parser ):
     def getItem(self):
 
         localctx = rabbitParser.GetItemContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 34, self.RULE_getItem)
+        self.enterRule(localctx, 36, self.RULE_getItem)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 169
-            self.match(rabbitParser.T__24)
+            self.state = 176
+            self.match(rabbitParser.T__25)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1615,11 +1707,11 @@ class rabbitParser ( Parser ):
     def getAngle(self):
 
         localctx = rabbitParser.GetAngleContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 36, self.RULE_getAngle)
+        self.enterRule(localctx, 38, self.RULE_getAngle)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 171
-            self.match(rabbitParser.T__25)
+            self.state = 178
+            self.match(rabbitParser.T__26)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1666,16 +1758,16 @@ class rabbitParser ( Parser ):
     def jump(self):
 
         localctx = rabbitParser.JumpContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 38, self.RULE_jump)
+        self.enterRule(localctx, 40, self.RULE_jump)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 173
-            self.match(rabbitParser.T__26)
-            self.state = 174
+            self.state = 180
+            self.match(rabbitParser.T__27)
+            self.state = 181
             self.expr()
-            self.state = 175
-            self.match(rabbitParser.T__3)
-            self.state = 176
+            self.state = 182
+            self.match(rabbitParser.T__4)
+            self.state = 183
             self.expr()
         except RecognitionException as re:
             localctx.exception = re
@@ -1720,12 +1812,12 @@ class rabbitParser ( Parser ):
     def sleep(self):
 
         localctx = rabbitParser.SleepContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 40, self.RULE_sleep)
+        self.enterRule(localctx, 42, self.RULE_sleep)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 178
-            self.match(rabbitParser.T__27)
-            self.state = 179
+            self.state = 185
+            self.match(rabbitParser.T__28)
+            self.state = 186
             self.expr()
         except RecognitionException as re:
             localctx.exception = re
@@ -1770,12 +1862,12 @@ class rabbitParser ( Parser ):
     def go(self):
 
         localctx = rabbitParser.GoContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 42, self.RULE_go)
+        self.enterRule(localctx, 44, self.RULE_go)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 181
-            self.match(rabbitParser.T__28)
-            self.state = 182
+            self.state = 188
+            self.match(rabbitParser.T__29)
+            self.state = 189
             self.expr()
         except RecognitionException as re:
             localctx.exception = re
@@ -1817,11 +1909,11 @@ class rabbitParser ( Parser ):
     def home(self):
 
         localctx = rabbitParser.HomeContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 44, self.RULE_home)
+        self.enterRule(localctx, 46, self.RULE_home)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 184
-            self.match(rabbitParser.T__29)
+            self.state = 191
+            self.match(rabbitParser.T__30)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1862,13 +1954,13 @@ class rabbitParser ( Parser ):
     def comparisonOperator(self):
 
         localctx = rabbitParser.ComparisonOperatorContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 46, self.RULE_comparisonOperator)
+        self.enterRule(localctx, 48, self.RULE_comparisonOperator)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 186
+            self.state = 193
             _la = self._input.LA(1)
-            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 547608330240) != 0)):
+            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 1095216660480) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -1915,10 +2007,10 @@ class rabbitParser ( Parser ):
     def name(self):
 
         localctx = rabbitParser.NameContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 48, self.RULE_name)
+        self.enterRule(localctx, 50, self.RULE_name)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 188
+            self.state = 195
             self.match(rabbitParser.STRING)
         except RecognitionException as re:
             localctx.exception = re
@@ -1972,37 +2064,37 @@ class rabbitParser ( Parser ):
     def value(self):
 
         localctx = rabbitParser.ValueContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 50, self.RULE_value)
+        self.enterRule(localctx, 52, self.RULE_value)
         self._la = 0 # Token type
         try:
-            self.state = 195
+            self.state = 202
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [44]:
+            if token in [45]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 190
+                self.state = 197
                 self.match(rabbitParser.INT)
                 pass
-            elif token in [45]:
+            elif token in [46]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 191
+                self.state = 198
                 self.match(rabbitParser.TRUE)
                 pass
-            elif token in [46]:
+            elif token in [47]:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 192
+                self.state = 199
                 self.match(rabbitParser.FALSE)
                 pass
-            elif token in [47]:
+            elif token in [48]:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 193
+                self.state = 200
                 self.name()
                 pass
-            elif token in [17, 18, 19, 20]:
+            elif token in [18, 19, 20, 21]:
                 self.enterOuterAlt(localctx, 5)
-                self.state = 194
+                self.state = 201
                 _la = self._input.LA(1)
-                if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 1966080) != 0)):
+                if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 3932160) != 0)):
                     self._errHandler.recoverInline(self)
                 else:
                     self._errHandler.reportMatch(self)
@@ -2097,34 +2189,34 @@ class rabbitParser ( Parser ):
     def expr(self):
 
         localctx = rabbitParser.ExprContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 52, self.RULE_expr)
+        self.enterRule(localctx, 54, self.RULE_expr)
         self._la = 0 # Token type
         try:
-            self.state = 210
+            self.state = 217
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,11,self._ctx)
             if la_ == 1:
                 localctx = rabbitParser.InfiExprContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 197
+                self.state = 204
                 self.value()
-                self.state = 198
+                self.state = 205
                 _la = self._input.LA(1)
-                if not(_la==39 or _la==40):
+                if not(_la==40 or _la==41):
                     self._errHandler.recoverInline(self)
                 else:
                     self._errHandler.reportMatch(self)
                     self.consume()
-                self.state = 201
+                self.state = 208
                 self._errHandler.sync(self)
                 la_ = self._interp.adaptivePredict(self._input,9,self._ctx)
                 if la_ == 1:
-                    self.state = 199
+                    self.state = 206
                     self.value()
                     pass
 
                 elif la_ == 2:
-                    self.state = 200
+                    self.state = 207
                     self.expr()
                     pass
 
@@ -2134,25 +2226,25 @@ class rabbitParser ( Parser ):
             elif la_ == 2:
                 localctx = rabbitParser.InfiExprContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 203
+                self.state = 210
                 self.value()
-                self.state = 204
+                self.state = 211
                 _la = self._input.LA(1)
-                if not(_la==41 or _la==42):
+                if not(_la==42 or _la==43):
                     self._errHandler.recoverInline(self)
                 else:
                     self._errHandler.reportMatch(self)
                     self.consume()
-                self.state = 207
+                self.state = 214
                 self._errHandler.sync(self)
                 la_ = self._interp.adaptivePredict(self._input,10,self._ctx)
                 if la_ == 1:
-                    self.state = 205
+                    self.state = 212
                     self.value()
                     pass
 
                 elif la_ == 2:
-                    self.state = 206
+                    self.state = 213
                     self.expr()
                     pass
 
@@ -2162,7 +2254,7 @@ class rabbitParser ( Parser ):
             elif la_ == 3:
                 localctx = rabbitParser.NumberExprContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
-                self.state = 209
+                self.state = 216
                 self.value()
                 pass
 

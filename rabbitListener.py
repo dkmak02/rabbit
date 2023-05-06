@@ -63,6 +63,24 @@ class rabbitListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by rabbitParser#ReverseBoolVar.
+    def enterReverseBoolVar(self, ctx:rabbitParser.ReverseBoolVarContext):
+        pass
+
+    # Exit a parse tree produced by rabbitParser#ReverseBoolVar.
+    def exitReverseBoolVar(self, ctx:rabbitParser.ReverseBoolVarContext):
+        pass
+
+
+    # Enter a parse tree produced by rabbitParser#reverseBool.
+    def enterReverseBool(self, ctx:rabbitParser.ReverseBoolContext):
+        pass
+
+    # Exit a parse tree produced by rabbitParser#reverseBool.
+    def exitReverseBool(self, ctx:rabbitParser.ReverseBoolContext):
+        pass
+
+
     # Enter a parse tree produced by rabbitParser#restart.
     def enterRestart(self, ctx:rabbitParser.RestartContext):
         pass
