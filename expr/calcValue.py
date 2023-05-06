@@ -3,7 +3,11 @@ import sys
 
 
 def calcValue(split_string, dict):
-    split_string = split_string[0]
+
+    if isinstance(split_string, list):
+        split_string = split_string[0]
+    else:
+        split_string = split_string
     split_string = re.split(r'([*/+-])', split_string)
     for v in split_string:
         if v in dict or v.isdigit() or v in ['*', '/', '+', '-']:
@@ -26,7 +30,6 @@ def calcValue(split_string, dict):
                     operator - 1]
                 dsa2 = dict[split_string[operator + 1]]['value'] if split_string[operator + 1] in dict else split_string[
                     operator + 1]
-                print(dsa, dsa2)
                 v1 = operator - 1
                 v2 = operator + 1
                 if v == '*':

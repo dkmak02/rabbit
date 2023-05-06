@@ -14,25 +14,48 @@ import commands.Commands as Commands
 import expr.calcValue as calcValue
 import expr.compareValue as compareValue
 import expr.logicalCompare as logicalCompare
+import expr.ifExpr as ifExpr
+import commands.visitFun as visitFun
+import commands.declarationCheck as declarationCheck
+import expr.forExpr as forExpr
 
 variables_dict = {}
 
 
 class MyVisitor(rabbitVisitor):
     def visitNumberExpr(self, ctx):
-        print(ctx.getText())
         value = ctx.getText()
         return int(value)
 
     def visitParenExpr(self, ctx):
-        print(ctx.getText())
         return self.visit(ctx.expr())
 
     def visitBoolExpr(self, ctx):
         if 'and' in ctx or 'or' in ctx:
             return logicalCompare.compare(ctx, variables_dict)
         return compareValue.compare(ctx[0], variables_dict)
+    def visitIfBlock(self, ctx):
+        print(ctx.getText())
+        val = ctx.getText().split(" ")
+        condition = val[1:val.index('?')]
+        block = val[val.index('{')+1:val.index('}')]
 
+        for v in condition:
+            val.pop(val.index(v))
+        for v in block:
+            val.pop(val.index(v))
+        val.pop(val.index('{'))
+        val.pop(val.index('}'))
+        if 'else' in val:
+            elseblock = val[val.index('{')+1:val.index('}')]
+            ifExpr.ifcommand(condition, block, variables_dict, visitor, elseblock)
+        else:
+            ifExpr.ifcommand(condition, block, variables_dict, visitor)
+    def visitForBlock(self, ctx):
+        val = ctx.getText().split(" ")
+        iterator = calcValue.calcValue(val[1], variables_dict)
+        block = val[val.index('{')+1:val.index('}')+1]
+        forExpr.forcommand(int(iterator), block, variables_dict, visitor)
     def visitDeclarationExpr(self, ctx):
         val = ctx.getText().split(" ")
         type = val[0]
@@ -92,40 +115,42 @@ class MyVisitor(rabbitVisitor):
 
 
 if __name__ == "__main__":
-    with open("tests/test.rabbit", "r") as f:
+    with open("tests/fortest.rabbit", "r") as f:
         for line in f:
             if line != "\n":
-                line = line.strip()
-                data = InputStream(line)
-                # lexer
-                lexer = rabbitLexer(data)
-                stream = CommonTokenStream(lexer)
-                # parser
-                parser = rabbitParser(stream)
-                listener = rabbitListener()
-                parser.addParseListener(listener)
-                try:
-                    _ = parser.prog()
-                except Exception as err:
-                    print(err)
-                    exit()
+                declarationCheck.declarationCheck(line)
+                # line = line.strip()
+                # data = InputStream(line)
+                # # lexer
+                # lexer = rabbitLexer(data)
+                # stream = CommonTokenStream(lexer)
+                # # parser
+                # parser = rabbitParser(stream)
+                # listener = rabbitListener()
+                # parser.addParseListener(listener)
+                # try:
+                #     _ = parser.prog()
+                # except Exception as err:
+                #     print(err)
+                #     exit()
 
 
         f.seek(0)
         print('\n\n\n')
-
+        s = ''
         for line in f:
             if line != "\n":
-                line = line.strip()
-                data = InputStream(line)
-                # lexer
-                lexer = rabbitLexer(data)
-                stream = CommonTokenStream(lexer)
-                # parser
-                parser = rabbitParser(stream)
-                tree = parser.prog()
-                # evaluator
                 visitor = MyVisitor()
-                output = visitor.visit(tree)
-                print(output)
-                print(variables_dict)
+                visitFun.visitFun(line, visitor)
+                # line = line.strip()
+                # data = InputStream(line)
+                # # lexer
+                # lexer = rabbitLexer(data)
+                # stream = CommonTokenStream(lexer)
+                # # parser
+                # parser = rabbitParser(stream)
+                # tree = parser.prog()
+                # # evaluator
+                #
+                # output = visitor.visit(tree)
+

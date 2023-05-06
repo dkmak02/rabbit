@@ -19,6 +19,11 @@ class rabbitVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by rabbitParser#ForBlock.
+    def visitForBlock(self, ctx:rabbitParser.ForBlockContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by rabbitParser#IfBlock.
     def visitIfBlock(self, ctx:rabbitParser.IfBlockContext):
         return self.visitChildren(ctx)
@@ -49,13 +54,13 @@ class rabbitVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by rabbitParser#block.
-    def visitBlock(self, ctx:rabbitParser.BlockContext):
+    # Visit a parse tree produced by rabbitParser#if.
+    def visitIf(self, ctx:rabbitParser.IfContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by rabbitParser#if.
-    def visitIf(self, ctx:rabbitParser.IfContext):
+    # Visit a parse tree produced by rabbitParser#block.
+    def visitBlock(self, ctx:rabbitParser.BlockContext):
         return self.visitChildren(ctx)
 
 

@@ -1,8 +1,7 @@
 int de 3
 de 6
-
 bool xd false
-
+bool xd 2
 bool b1 2<=3
 bool b2 2>=3
 
@@ -11,9 +10,10 @@ dsa 6
 int dsb 2+dsa*2+dsa
 
 bool b7 False
-bool b7 dsb>=dsa
+b7 dsb>=dsa
 
 int aa 90
 sleep 1
-if True ? { go 2*aa sleep 1 home sleep 1 go 200 sleep 1 home sleep 1 angle 90 } endif
+print b7
 aa 92
+print aa
