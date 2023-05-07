@@ -1,7 +1,4 @@
-import sys
-
 import pygame
-
 from rabbit import Rabbit
 from antlr4 import FileStream, CommonTokenStream, InputStream
 from antlr4.error.ErrorListener import ErrorListener, ConsoleErrorListener
@@ -9,7 +6,6 @@ from rabbitLexer import rabbitLexer
 from rabbitParser import rabbitParser
 from rabbitVisitor import rabbitVisitor
 from rabbitListener import rabbitListener
-import re
 import commands.Commands as Commands
 import expr.calcValue as calcValue
 import expr.compareValue as compareValue
@@ -20,7 +16,6 @@ import commands.declarationCheck as declarationCheck
 import expr.forExpr as forExpr
 
 variables_dict = {}
-
 
 class MyVisitor(rabbitVisitor):
     def visitNumberExpr(self, ctx):
@@ -119,44 +114,38 @@ class MyVisitor(rabbitVisitor):
         val = val[0][1:]
         variables_dict[name]["value"] = not variables_dict[name]["value"]
 
+WINDOWX = 500
+WINDOWY = 500
+
+#RABBIT PROPERTIES
+TURTLE_WIDTH = 25
+TURTLE_HEIGHT = 25
+NOSEANGLE  = 15
 
 if __name__ == "__main__":
-    with open("tests/test3.rabbit", "r") as f:
+    pygame.init()
+    white = 255, 255, 255
+    screen = pygame.display.set_mode((WINDOWX, WINDOWY))
+    Rabbit = Rabbit(WINDOWX, WINDOWY)
+    rabbitImg = pygame.image.load('rabbit.png')
+    Rabbit.setImage(rabbitImg)
+    screen.fill(white)
+    Rabbit.draw(screen)
+    pygame.display.flip()
+    pygame.display.set_icon(rabbitImg)
+    pygame.display.set_caption("Rabbit")
+
+    with open("tests/test.rabbit", "r") as f:
         for line in f:
             if line != "\n":
                 declarationCheck.declarationCheck(line)
-                # line = line.strip()
-                # data = InputStream(line)
-                # # lexer
-                # lexer = rabbitLexer(data)
-                # stream = CommonTokenStream(lexer)
-                # # parser
-                # parser = rabbitParser(stream)
-                # listener = rabbitListener()
-                # parser.addParseListener(listener)
-                # try:
-                #     _ = parser.prog()
-                # except Exception as err:
-                #     print(err)
-                #     exit()
-
 
         f.seek(0)
         print('\n\n\n')
         s = ''
+
         for line in f:
             if line != "\n":
                 visitor = MyVisitor()
                 visitFun.visitFun(line, visitor)
-                # line = line.strip()
-                # data = InputStream(line)
-                # # lexer
-                # lexer = rabbitLexer(data)
-                # stream = CommonTokenStream(lexer)
-                # # parser
-                # parser = rabbitParser(stream)
-                # tree = parser.prog()
-                # # evaluator
-                #
-                # output = visitor.visit(tree)
 
