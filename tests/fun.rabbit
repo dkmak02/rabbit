@@ -1,0 +1,3 @@
+bool dos(cos, xd) { go xd  go cos*2  print cos } return cos
+bool xd dos(22, 15)
+

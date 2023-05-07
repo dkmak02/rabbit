@@ -6,7 +6,7 @@ cmd: go #Command
    | home #Command
    | angle #Command
    | setView #Command
-   | for #Command
+   | for #ForBlock
    | if #IfBlock
    | getX #Command
    | getY #Command
@@ -21,25 +21,34 @@ cmd: go #Command
    | sleep #Command
    | print #Command
    | restart #Command
+   | reverseBool #ReverseBoolVar
+   | fun #Function
+   | call #CallFunction
    ;
+
+call: name '('(name', '|expr', ')*(name|expr)')';
+
+fun:('bool '|'int '|'void ')  name '('(name', '|INT', ')*(name|INT)') ' block ' ' ( 'return ' expr)?;
+
+reverseBool: name ' !'name;
+
 
 restart: 'reset';
 
 print: 'print 'expr;
-declaration: 'int ' name ' 'expr
+declaration: 'int ' name ' '(expr|call)
         | 'bool ' name ' '(TRUE|FALSE)
-        | 'bool ' name' ' comparison;
-block: '{'cmd*'}' ;
-if: 'if ' comparison '?' block 'endif'|
-    'if ' comparison '?' block 'else' block 'endif';
-for: 'for' expr  block 'endfor';
-comparison
-   : (expr) comparisonOperator (expr|comparison)|expr
-   ;
+        | 'bool ' name' ' (comparison|call);
+
+if: 'if ' comparison ' ? ' block (' else ' block)?;
+block: '{ ' (cmd ' '+)+ '}';
+for: 'for ' expr ' '  block;
+comparison: expr comparisonOperator (expr | comparison) | '(' comparison ')' | value;
 getX: 'getX';
 getY: 'getY';
-setValue: 'name ' expr|
-    'name ' (TRUE|FALSE);
+setValue: name ' ' expr|
+    name ' '  (TRUE|FALSE) |
+    name' ' comparison;
 
 angle: 'angle ' ('90'|'180'|'270'|'360');
 
@@ -95,4 +104,6 @@ FALSE: 'FALSE'
     | 'false'
     | 'False';
 STRING : [a-zA-Z][a-zA-Z0-9_]*;
-WS   : [ \t]+ -> skip ;
+WS: [\r]+ -> skip;
+TAB: [\t]+;
+NEWLINE : [\r\n]+;

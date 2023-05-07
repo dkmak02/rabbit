@@ -6,6 +6,8 @@ else:
     from rabbitParser import rabbitParser
 
 # This class defines a complete listener for a parse tree produced by rabbitParser.
+variables_dict = {}
+functions_dict = {}
 class rabbitListener(ParseTreeListener):
 
     # Enter a parse tree produced by rabbitParser#prog.
@@ -23,6 +25,15 @@ class rabbitListener(ParseTreeListener):
 
     # Exit a parse tree produced by rabbitParser#Command.
     def exitCommand(self, ctx:rabbitParser.CommandContext):
+        pass
+
+
+    # Enter a parse tree produced by rabbitParser#ForBlock.
+    def enterForBlock(self, ctx:rabbitParser.ForBlockContext):
+        pass
+
+    # Exit a parse tree produced by rabbitParser#ForBlock.
+    def exitForBlock(self, ctx:rabbitParser.ForBlockContext):
         pass
 
 
@@ -53,30 +64,114 @@ class rabbitListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by rabbitParser#restart.
-    def enterRestart(self, ctx:rabbitParser.RestartContext):
+    # Enter a parse tree produced by rabbitParser#ReverseBoolVar.
+    def enterReverseBoolVar(self, ctx:rabbitParser.ReverseBoolVarContext):
         pass
 
-    # Exit a parse tree produced by rabbitParser#restart.
-    def exitRestart(self, ctx:rabbitParser.RestartContext):
-        pass
-
-
-    # Enter a parse tree produced by rabbitParser#print.
-    def enterPrint(self, ctx:rabbitParser.PrintContext):
-        pass
-
-    # Exit a parse tree produced by rabbitParser#print.
-    def exitPrint(self, ctx:rabbitParser.PrintContext):
+    # Exit a parse tree produced by rabbitParser#ReverseBoolVar.
+    def exitReverseBoolVar(self, ctx:rabbitParser.ReverseBoolVarContext):
         pass
 
 
-    # Enter a parse tree produced by rabbitParser#declaration.
-    def enterDeclaration(self, ctx:rabbitParser.DeclarationContext):
+    # Enter a parse tree produced by rabbitParser#Function.
+    def enterFunction(self, ctx:rabbitParser.FunctionContext):
         pass
 
-    # Exit a parse tree produced by rabbitParser#declaration.
-    def exitDeclaration(self, ctx:rabbitParser.DeclarationContext):
+    # Exit a parse tree produced by rabbitParser#Function.
+    def exitFunction(self, ctx:rabbitParser.FunctionContext):
+        pass
+
+
+    # Enter a parse tree produced by rabbitParser#CallFunction.
+    def enterCallFunction(self, ctx:rabbitParser.CallFunctionContext):
+        pass
+
+    # Exit a parse tree produced by rabbitParser#CallFunction.
+    def exitCallFunction(self, ctx:rabbitParser.CallFunctionContext):
+        pass
+
+
+    # Enter a parse tree produced by rabbitParser#call.
+    def enterCall(self, ctx:rabbitParser.CallContext):
+        pass
+
+    # Exit a parse tree produced by rabbitParser#call.
+    def exitCall(self, ctx:rabbitParser.CallContext):
+        pass
+
+
+    # Enter a parse tree produced by rabbitParser#fun.
+    def enterFun(self, ctx:rabbitParser.FunContext):
+        pass
+
+    # Exit a parse tree produced by rabbitParser#fun.
+    def exitFun(self, ctx: rabbitParser.FunContext):
+        val = ctx.getText().split(" ")
+        name = val[1]
+        name = name.split("(")[0]
+        if name in functions_dict.keys():
+            raise ValueError(
+                "Variable named \"" + name + "\" has already been declared as " + variables_dict[name]['type'] + ".")
+        else:
+            functions_dict[name] = {"type": 'fun', "value": 0}
+
+        # Enter a parse tree produced by rabbitParser#reverseBool.
+
+    def enterReverseBool(self, ctx: rabbitParser.ReverseBoolContext):
+        pass
+
+        # Exit a parse tree produced by rabbitParser#reverseBool.
+
+    def exitReverseBool(self, ctx: rabbitParser.ReverseBoolContext):
+        pass
+
+        # Enter a parse tree produced by rabbitParser#restart.
+
+    def enterRestart(self, ctx: rabbitParser.RestartContext):
+        pass
+
+        # Exit a parse tree produced by rabbitParser#restart.
+
+    def exitRestart(self, ctx: rabbitParser.RestartContext):
+        pass
+
+        # Enter a parse tree produced by rabbitParser#print.
+
+    def enterPrint(self, ctx: rabbitParser.PrintContext):
+        pass
+
+        # Exit a parse tree produced by rabbitParser#print.
+
+    def exitPrint(self, ctx: rabbitParser.PrintContext):
+        pass
+
+        # Enter a parse tree produced by rabbitParser#declaration.
+
+    def enterDeclaration(self, ctx: rabbitParser.DeclarationContext):
+        pass
+
+        # Exit a parse tree produced by rabbitParser#declaration.
+
+    def exitDeclaration(self, ctx: rabbitParser.DeclarationContext):
+        val = ctx.getText().split(" ")
+        type = val[0]
+        name = val[1]
+        if name in variables_dict.keys():
+            raise ValueError(
+                "Variable named \"" + name + "\" has already been declared as " + variables_dict[name]['type'] + ".")
+        else:
+            if type == 'int':
+                variables_dict[name] = {"type": type, "value": 0}
+            elif type == 'bool':
+                variables_dict[name] = {"type": type, "value": False}
+
+
+    # Enter a parse tree produced by rabbitParser#if.
+    def enterIf(self, ctx:rabbitParser.IfContext):
+        pass
+
+    # Exit a parse tree produced by rabbitParser#if.
+    def exitIf(self, ctx:rabbitParser.IfContext):
         pass
 
 
@@ -86,15 +181,6 @@ class rabbitListener(ParseTreeListener):
 
     # Exit a parse tree produced by rabbitParser#block.
     def exitBlock(self, ctx:rabbitParser.BlockContext):
-        pass
-
-
-    # Enter a parse tree produced by rabbitParser#if.
-    def enterIf(self, ctx:rabbitParser.IfContext):
-        pass
-
-    # Exit a parse tree produced by rabbitParser#if.
-    def exitIf(self, ctx:rabbitParser.IfContext):
         pass
 
 

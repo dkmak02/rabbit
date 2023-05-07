@@ -12,7 +12,7 @@ home
 go 200
 bool xd true
 bool xd2 4<3 or 3<4
-int dor 22+xd
+int dor 22+1
 int ta 1+7*3+1
 int do 1+dor
 sleep 1

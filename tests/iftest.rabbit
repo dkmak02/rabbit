@@ -1,0 +1,3 @@
+int a 15
+if 2>1 ? { int dsa 20  print dsa  go 200 } else { go 200 }
+print dsa
