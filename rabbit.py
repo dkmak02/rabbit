@@ -18,8 +18,10 @@ class Rabbit:
 		self.pointStart = []
 		self.pointEnd = []
 		self.lineColor = []
+
 	def draw(self, screen):
 		screen.blit(self.image, self.imageRect)
+
 	def setImage(self, image):
 		self.image = image
 		self.imageSave = self.image
@@ -51,6 +53,7 @@ class Rabbit:
 		self.imageRect = self.imageRect.move([int(distance * math.cos(self.angleRad)), int(-distance * math.sin(self.angleRad))])
 		self.x = self.imageRect.centerx
 		self.y = self.imageRect.centery
+
 	def home(self):
 		self.x = WINDOWX/2
 		self.y = WINDOWY/2
@@ -63,6 +66,7 @@ class Rabbit:
 		self.imageRect = self.imageRect.move([self.x , self.y ])
 		self.x = self.imageRect.centerx
 		self.y = self.imageRect.centery
+
 	def jump(self, x, y, screen):
 		self.x = x
 		self.y = y
