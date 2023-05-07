@@ -1,7 +1,5 @@
 import sys
-
 import pygame
-
 from rabbit import Rabbit
 from antlr4 import FileStream, CommonTokenStream, InputStream
 from antlr4.error.ErrorListener import ErrorListener, ConsoleErrorListener
@@ -18,6 +16,7 @@ import expr.ifExpr as ifExpr
 import commands.visitFun as visitFun
 import commands.declarationCheck as declarationCheck
 import expr.forExpr as forExpr
+from commands.Commands import Commands
 
 variables_dict = {}
 
@@ -71,12 +70,16 @@ class MyVisitor(rabbitVisitor):
         val = ctx.getText().split(" ")
         name = val[0]
         value = val[1:]
-        type = variables_dict[name]["type"]
-        if type == 'int':
-            value = self.visitInfiExpr(value)
-        elif type == 'bool':
-            value = self.visitBoolExpr(value)
-        variables_dict[name] = {"type": variables_dict[name]["type"], "value": value}
+        try:
+            type = variables_dict[name]["type"]
+            if type == 'int':
+                value = self.visitInfiExpr(value)
+            elif type == 'bool':
+                value = self.visitBoolExpr(value)
+            variables_dict[name] = {"type": variables_dict[name]["type"], "value": value}
+        except Exception as err:
+            print("Variable named \"" + name + "\" has not been declared.")
+            exit()
 
     def visitCommand(self, ctx):
         val = ctx.getText().split(" ")
@@ -85,33 +88,34 @@ class MyVisitor(rabbitVisitor):
         match command:
             case "go":
                 val = self.visitInfiExpr(val)
-                Commands.goCommand(int(val))
+                cmd.goCommand(int(val))
             case "home":
-                Commands.homeCommand()
+                cmd.homeCommand()
             case "angle":
-                Commands.angleCommand()
+                cmd.angleCommand()
             case "jump":
-                Commands.jumpCommand()
+                cmd.jumpCommand()
             case "reset":
-                Commands.resetCommand()
+                cmd.resetCommand()
             case "getX":
-                Commands.getXCommand()
+                cmd.getXCommand()
             case "getY":
-                Commands.getYCommand()
+                cmd.getYCommand()
             case "setView":
-                Commands.setViewCommand()
+                cmd.setViewCommand()
             case "sleep":
-                Commands.sleepCommand(int(val[0]))
+                cmd.sleepCommand(int(val[0]))
             case "if":
                 print("not implemented yet")
             case "for":
                 print("not implemented yet")
             case "print":
-                Commands.printCommand(variables_dict, val)
+                cmd.printCommand(variables_dict, val)
         return (command, val)
 
     def visitInfiExpr(self, split_string):
         return calcValue.calcValue(split_string, variables_dict)
+
     def visitReverseBoolVar(self, ctx):
         val = ctx.getText().split(" ")
         name = val[0]
@@ -119,44 +123,38 @@ class MyVisitor(rabbitVisitor):
         val = val[0][1:]
         variables_dict[name]["value"] = not variables_dict[name]["value"]
 
+WINDOWX = 500
+WINDOWY = 500
+
+#RABBIT PROPERTIES
+TURTLE_WIDTH = 25
+TURTLE_HEIGHT = 25
+NOSEANGLE  = 15
 
 if __name__ == "__main__":
-    with open("tests/test3.rabbit", "r") as f:
+    pygame.init()
+    white = 255, 255, 255
+    screen = pygame.display.set_mode((WINDOWX, WINDOWY))
+    rabbit = Rabbit(WINDOWX, WINDOWY, WINDOWX, WINDOWY)
+    rabbitImg = pygame.image.load('rabbit.png')
+    rabbit.setImage(rabbitImg)
+    screen.fill(white)
+    rabbit.draw(screen)
+    pygame.display.flip()
+    pygame.display.set_icon(rabbitImg)
+    pygame.display.set_caption("Rabbit")
+    cmd = Commands(rabbit, screen)
+
+    with open("tests/fortest.rabbit", "r") as f:
         for line in f:
             if line != "\n":
                 declarationCheck.declarationCheck(line)
-                # line = line.strip()
-                # data = InputStream(line)
-                # # lexer
-                # lexer = rabbitLexer(data)
-                # stream = CommonTokenStream(lexer)
-                # # parser
-                # parser = rabbitParser(stream)
-                # listener = rabbitListener()
-                # parser.addParseListener(listener)
-                # try:
-                #     _ = parser.prog()
-                # except Exception as err:
-                #     print(err)
-                #     exit()
-
 
         f.seek(0)
         print('\n\n\n')
         s = ''
+
         for line in f:
             if line != "\n":
                 visitor = MyVisitor()
                 visitFun.visitFun(line, visitor)
-                # line = line.strip()
-                # data = InputStream(line)
-                # # lexer
-                # lexer = rabbitLexer(data)
-                # stream = CommonTokenStream(lexer)
-                # # parser
-                # parser = rabbitParser(stream)
-                # tree = parser.prog()
-                # # evaluator
-                #
-                # output = visitor.visit(tree)
-
