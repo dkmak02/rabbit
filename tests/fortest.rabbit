@@ -1,2 +1,2 @@
 int dsa 0
-for 5 { for 5 { if 2>3 ? { print dsa  dsa dsa+1 } else { go 15 } } }
+for 5 { dsa dsa+1   print dsa  for 5 { dsa dsa+1  print dsa  if 2>1 ? { int dsaa 20  print dsaa  go 200 } else { go 200 } } }
