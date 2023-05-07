@@ -32,9 +32,7 @@ restart: 'reset';
 print: 'print 'expr;
 declaration: 'int ' name ' 'expr
         | 'bool ' name ' '(TRUE|FALSE)
-        | 'bool ' name' ' comparison
-        | ('bool '|'int '|'void ')  name '('(name', '|INT', ')*(name|INT)') ' block ' ' ( 'return ' expr)?;
-
+        | 'bool ' name' ' comparison;
 if: 'if ' comparison ' ? ' block (' else ' block)?;
 block: '{ ' (cmd ' '+)+ '}';
 for: 'for ' expr ' '  block;
