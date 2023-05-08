@@ -213,10 +213,8 @@ class MyVisitor(rabbitVisitor):
                 cmd.get().getXCommand()
             case "getY":
                 cmd.get().getYCommand()
-            case "setView":
-                #     TODO: jak wziac np lewo albo prawo??
-                val = self.visitInfiExpr(val)
-                cmd.get().setViewCommand(int(val))
+            case "setview":
+                cmd.get().setViewCommand(val[0])
             case "sleep":
                 cmd.get().sleepCommand(int(val[0]))
             case "if":

@@ -13,7 +13,6 @@ class Commands:
         self.rabbit.rotate(val)
     def jumpCommand(self, x, y):
         self.rabbit.jump(x, y)
-        print("not implemented yet")
     def resetCommand(self):
         print("not implemented yet")
     def getXCommand(self):
@@ -21,8 +20,7 @@ class Commands:
     def getYCommand(self):
         print("not implemented yet")
     def setViewCommand(self, val):
-        print("not implemented yet")
-        # self.rabbit.rotate(val)
+        self.rabbit.rotate(val)
     def sleepCommand(self, val):
         time.sleep(val)
     def printCommand(self, variables_dict, var):

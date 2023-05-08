@@ -18,7 +18,7 @@ if __name__ == "__main__":
     rabbit.home()
     CMD().set(Commands(rabbit))
 
-    with open("tests/cmd.rabbit", "r") as f:
+    with open("tests/test2.rabbit", "r") as f:
         for line in f:
             if line != "\n":
                 declarationCheck.declarationCheck(line)

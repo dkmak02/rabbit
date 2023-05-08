@@ -60,6 +60,7 @@ class Rabbit:
 			self.angle = angle
 			self.angleRad = math.radians(self.angle)
 			self.image = rot_center(self.imageSave, self.image,self.angle)
+			self.draw()
 
 	def mvForward(self, distance):
 		self.pointStart.append((self.x, self.y))
