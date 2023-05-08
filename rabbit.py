@@ -86,7 +86,7 @@ class Rabbit:
 	def jump(self, x, y):
 		self.x = x
 		self.y = y
-		self.imageRect = self.imageRect.move([self.x , self.y ])
+		self.imageRect = self.imageRect.move([self.x, self.y])
 		self.x = self.imageRect.centerx
 		self.y = self.imageRect.centery
 		self.draw()

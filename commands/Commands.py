@@ -11,7 +11,7 @@ class Commands:
         print("You are home.")
     def angleCommand(self, val):
         self.rabbit.rotate(val)
-    def jumpCommand(self):
+    def jumpCommand(self, x, y):
         self.rabbit.jump(x, y)
         print("not implemented yet")
     def resetCommand(self):

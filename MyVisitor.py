@@ -15,14 +15,19 @@ class CMD:
     def set(self, value):
         CMD.commandClass = value
 
-def fun_c(comm, wating, to_remove, visitor):
+def fun_c(comm, wating, to_remove, visitor, to_return = None, type = None):
     for i in comm:
         visitFun.visitFun(i, visitor)
     for w in wating:
         variables_dict[w] = wating[w]
+    if to_return is not None:
+        if type == 'int':
+            to_return = MyVisitor().visitInfiExpr(to_return)
+        elif type == 'bool':
+            to_return = MyVisitor().visitBoolExpr(to_return)
     for t in to_remove:
         variables_dict.pop(t)
-
+    return to_return
 class MyVisitor(rabbitVisitor):
 
     def visitNumberExpr(self, ctx):
@@ -163,12 +168,10 @@ class MyVisitor(rabbitVisitor):
                     variables_dict[a] = {'type': 'int', 'value': b}
 
         if type == 'int':
-            to_return = self.visitInfiExpr(to_return)
-            fun_c(comm, wating, to_remove, visitor)
+            fun_val = fun_c(comm, wating, to_remove, visitor, to_return, 'int')
             return to_return
         elif type == 'bool':
-            to_return = self.visitInfiExpr(to_return)
-            fun_c(comm, wating, to_remove, visitor)
+            fun_val = fun_c(comm, wating, to_remove, visitor, to_return, 'bool')
             return to_return
         else:
             fun_c(comm, wating, to_remove, visitor)
@@ -199,9 +202,11 @@ class MyVisitor(rabbitVisitor):
                 val = self.visitInfiExpr(val)
                 cmd.get().angleCommand(int(val))
             case "jump":
-                #     TODO: jak druga wartosc??
-                val = self.visitInfiExpr(val)
-                cmd.get().jumpCommand(val)
+                x = val[0]
+                y = val[1]
+                x = int(self.visitInfiExpr(x))
+                y = int(self.visitInfiExpr(y))
+                cmd.get().jumpCommand(x,y)
             case "reset":
                 cmd.get().resetCommand()
             case "getX":
