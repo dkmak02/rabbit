@@ -4,7 +4,7 @@ from MyVisitor import MyVisitor
 
 
 if __name__ == "__main__":
-    with open("tests/fun.rabbit", "r") as f:
+    with open("tests/fortest.rabbit", "r") as f:
         for line in f:
             if line != "\n":
                 declarationCheck.declarationCheck(line)

@@ -23,5 +23,4 @@ def todo(block):
                     for k in range(j, index, -1):
                         todo.pop(k)
                     break
-
     return todo

@@ -26,8 +26,18 @@ class MyVisitor(rabbitVisitor):
     def visitIfBlock(self, ctx):
         val = ctx.getText().split(" ")
         condition = val[1:val.index('?')]
-        block = val[val.index('{')+1:val.index('}')]
-
+        start = 1
+        end = 0
+        to = 0
+        for i in range(val.index('{')+1, len(val)):
+            if val[i] == '{':
+                start += 1
+            if val[i] == '}':
+                end += 1
+            if start == end:
+                to = i
+                break
+        block = val[val.index('{')+1:to]
         for v in condition:
             val.pop(val.index(v))
         for v in block:
@@ -35,14 +45,36 @@ class MyVisitor(rabbitVisitor):
         val.pop(val.index('{'))
         val.pop(val.index('}'))
         if 'else' in val:
-            elseblock = val[val.index('{')+1:val.index('}')]
+            start = 1
+            end = 0
+            to = 0
+            for i in range(val.index('{') + 1, len(val)):
+                if val[i] == '{':
+                    start += 1
+                if val[i] == '}':
+                    end += 1
+                if start == end:
+                    to = i
+                    break
+            elseblock = val[val.index('{')+1:to]
             ifExpr.ifcommand(condition, block, variables_dict, visitor, elseblock)
         else:
             ifExpr.ifcommand(condition, block, variables_dict, visitor)
     def visitForBlock(self, ctx):
         val = ctx.getText().split(" ")
         iterator = calcValue.calcValue(val[1], variables_dict)
-        block = val[val.index('{')+1:val.index('}')+1]
+        start = 1
+        end = 0
+        to = 0
+        for i in range(val.index('{') + 1, len(val)):
+            if val[i] == '{':
+                start += 1
+            if val[i] == '}':
+                end += 1
+            if start == end:
+                to = i
+                break
+        block = val[val.index('{') + 1:to]
         forExpr.forcommand(int(iterator), block, variables_dict, visitor)
     def visitDeclarationExpr(self, ctx):
         val = ctx.getText().split(" ")

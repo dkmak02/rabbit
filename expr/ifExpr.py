@@ -14,6 +14,6 @@ def ifcommand(condition,block, variables_dict,visitor, elseblock = None):
             visitFun.visitFun(i, visitor)
 
     elif elseblock != None:
-        comm = splitBlock.todo(block)
+        comm = splitBlock.todo(elseblock)
         for i in comm:
             visitFun.visitFun(i, visitor)
