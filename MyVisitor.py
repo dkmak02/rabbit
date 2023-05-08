@@ -2,6 +2,7 @@ from commands import splitBlock, visitFun
 from expr import logicalCompare, compareValue, ifExpr, calcValue, forExpr
 from rabbitVisitor import rabbitVisitor
 import commands.Commands as Commands
+import sys
 
 variables_dict = {}
 functions_dict = {}
@@ -202,6 +203,8 @@ class MyVisitor(rabbitVisitor):
                 cmd.get().homeCommand()
             case "angle":
                 val = self.visitInfiExpr(val)
+                if val not in ['90','180', '270', '360']:
+                    sys.exit()
                 cmd.get().angleCommand(int(val))
             case "jump":
                 x = val[0]
