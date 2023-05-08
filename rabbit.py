@@ -33,6 +33,7 @@ class Rabbit:
 		self.WINDOWX = WINDOWX
 		self.WINDOWY = WINDOWY
 	def draw(self):
+		self.screen.fill(self.white)
 		self.screen.blit(self.image, self.imageRect)
 	def setImage(self, image):
 		self.image = image
