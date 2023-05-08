@@ -13,20 +13,12 @@ TURTLE_HEIGHT = 25
 NOSEANGLE = 15
 
 if __name__ == "__main__":
-    pygame.init()
-    white = 255, 255, 255
-    screen = pygame.display.set_mode((WINDOWX, WINDOWY))
-    rabbit = Rabbit(WINDOWX, WINDOWY, WINDOWX, WINDOWY)
-    rabbitImg = pygame.image.load('rabbit.png')
-    rabbit.setImage(rabbitImg)
-    screen.fill(white)
-    rabbit.draw(screen)
-    pygame.display.flip()
-    pygame.display.set_icon(rabbitImg)
-    pygame.display.set_caption("Rabbit")
-    CMD().set(Commands(rabbit, screen))
+    rabbit = Rabbit()
+    rabbit.start()
+    rabbit.home()
+    CMD().set(Commands(rabbit))
 
-    with open("tests/fortest.rabbit", "r") as f:
+    with open("tests/test2.rabbit", "r") as f:
         for line in f:
             if line != "\n":
                 declarationCheck.declarationCheck(line)

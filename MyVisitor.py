@@ -196,9 +196,12 @@ class MyVisitor(rabbitVisitor):
             case "home":
                 cmd.get().homeCommand()
             case "angle":
-                cmd.get().angleCommand()
+                val = self.visitInfiExpr(val)
+                cmd.get().angleCommand(int(val))
             case "jump":
-                cmd.get().jumpCommand()
+                #     TODO: jak druga wartosc??
+                val = self.visitInfiExpr(val)
+                cmd.get().jumpCommand(val)
             case "reset":
                 cmd.get().resetCommand()
             case "getX":
@@ -206,7 +209,9 @@ class MyVisitor(rabbitVisitor):
             case "getY":
                 cmd.get().getYCommand()
             case "setView":
-                cmd.get().setViewCommand()
+                #     TODO: jak wziac np lewo albo prawo??
+                val = self.visitInfiExpr(val)
+                cmd.get().setViewCommand(int(val))
             case "sleep":
                 cmd.get().sleepCommand(int(val[0]))
             case "if":
