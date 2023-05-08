@@ -2,16 +2,29 @@ from commands import splitBlock, visitFun
 from expr import logicalCompare, compareValue, ifExpr, calcValue, forExpr
 from rabbitVisitor import rabbitVisitor
 import commands.Commands as Commands
+
 variables_dict = {}
 functions_dict = {}
-def fun_c(comm,wating,to_remove,visitor):
+
+class CMD:
+    commandClass = None
+
+    def get(self):
+        return CMD.commandClass
+
+    def set(self, value):
+        CMD.commandClass = value
+
+def fun_c(comm, wating, to_remove, visitor):
     for i in comm:
         visitFun.visitFun(i, visitor)
     for w in wating:
         variables_dict[w] = wating[w]
     for t in to_remove:
         variables_dict.pop(t)
+
 class MyVisitor(rabbitVisitor):
+
     def visitNumberExpr(self, ctx):
         value = ctx.getText()
         return int(value)
@@ -23,13 +36,14 @@ class MyVisitor(rabbitVisitor):
         if 'and' in ctx or 'or' in ctx:
             return logicalCompare.compare(ctx, variables_dict)
         return compareValue.compare(ctx[0], variables_dict)
+
     def visitIfBlock(self, ctx):
         val = ctx.getText().split(" ")
         condition = val[1:val.index('?')]
         start = 1
         end = 0
         to = 0
-        for i in range(val.index('{')+1, len(val)):
+        for i in range(val.index('{') + 1, len(val)):
             if val[i] == '{':
                 start += 1
             if val[i] == '}':
@@ -37,7 +51,7 @@ class MyVisitor(rabbitVisitor):
             if start == end:
                 to = i
                 break
-        block = val[val.index('{')+1:to]
+        block = val[val.index('{') + 1:to]
         for v in condition:
             val.pop(val.index(v))
         for v in block:
@@ -56,10 +70,11 @@ class MyVisitor(rabbitVisitor):
                 if start == end:
                     to = i
                     break
-            elseblock = val[val.index('{')+1:to]
+            elseblock = val[val.index('{') + 1:to]
             ifExpr.ifcommand(condition, block, variables_dict, visitor, elseblock)
         else:
             ifExpr.ifcommand(condition, block, variables_dict, visitor)
+
     def visitForBlock(self, ctx):
         val = ctx.getText().split(" ")
         iterator = calcValue.calcValue(val[1], variables_dict)
@@ -76,6 +91,7 @@ class MyVisitor(rabbitVisitor):
                 break
         block = val[val.index('{') + 1:to]
         forExpr.forcommand(int(iterator), block, variables_dict, visitor)
+
     def visitDeclarationExpr(self, ctx):
         val = ctx.getText().split(" ")
         type = val[0]
@@ -90,6 +106,7 @@ class MyVisitor(rabbitVisitor):
                 value = self.visitCall(value)
             value = self.visitBoolExpr(value)
         variables_dict[name] = {"type": type, "value": value}
+
     def visitFunction(self, ctx):
         val = ctx.getText().split(" ")
         type = val[0] + '-' + 'fun'
@@ -100,7 +117,7 @@ class MyVisitor(rabbitVisitor):
         if type == 'void-fun' and 'return' in value:
             raise ValueError(
                 "Void type function cannot return a value")
-        functions_dict[name] = {"type": type,"args": args, "value": value}
+        functions_dict[name] = {"type": type, "args": args, "value": value}
 
     def visitCall(self, ctx):
         val = ctx
@@ -117,17 +134,18 @@ class MyVisitor(rabbitVisitor):
                 "Function " + name + " is not defined")
         if args_len != len(functions_dict[name]["args"]):
             raise ValueError(
-                "Function " + name + " takes " + str(functions_dict[name]["args"]) + " arguments, " + str(args_len) + " given")
+                "Function " + name + " takes " + str(functions_dict[name]["args"]) + " arguments, " + str(
+                    args_len) + " given")
         type = functions_dict[name]["type"].split('-')[0]
         value = functions_dict[name]["value"]
         to_return = None
         if 'return' in value:
-            to_return = value[value.index('return')+1:]
+            to_return = value[value.index('return') + 1:]
         comm = value[value.index('{') + 1:value.index('}')]
         comm = splitBlock.todo(comm)
         wating = {}
         to_remove = []
-        for a,b in zip(fun_args, args):
+        for a, b in zip(fun_args, args):
             a = a.replace(' ', '')
             b = b.replace(' ', '')
             if a in variables_dict:
@@ -155,10 +173,6 @@ class MyVisitor(rabbitVisitor):
         else:
             fun_c(comm, wating, to_remove, visitor)
 
-
-
-
-
     def visitReassignment(self, ctx):
         val = ctx.getText().split(" ")
         name = val[0]
@@ -174,32 +188,33 @@ class MyVisitor(rabbitVisitor):
         val = ctx.getText().split(" ")
         command = val[0]
         val = val[1:]
+        cmd = CMD()
         match command:
             case "go":
                 val = self.visitInfiExpr(val)
-                Commands.goCommand(int(val))
+                cmd.get().goCommand(int(val))
             case "home":
-                Commands.homeCommand()
+                cmd.get().homeCommand()
             case "angle":
-                Commands.angleCommand()
+                cmd.get().angleCommand()
             case "jump":
-                Commands.jumpCommand()
+                cmd.get().jumpCommand()
             case "reset":
-                Commands.resetCommand()
+                cmd.get().resetCommand()
             case "getX":
-                Commands.getXCommand()
+                cmd.get().getXCommand()
             case "getY":
-                Commands.getYCommand()
+                cmd.get().getYCommand()
             case "setView":
-                Commands.setViewCommand()
+                cmd.get().setViewCommand()
             case "sleep":
-                Commands.sleepCommand(int(val[0]))
+                cmd.get().sleepCommand(int(val[0]))
             case "if":
                 print("not implemented yet")
             case "for":
                 print("not implemented yet")
             case "print":
-                Commands.printCommand(variables_dict, val)
+                cmd.get().printCommand(variables_dict, val)
         return (command, val)
 
     def visitInfiExpr(self, split_string):
@@ -208,6 +223,7 @@ class MyVisitor(rabbitVisitor):
             raise ValueError(
                 "Cannot perform mathematical operations on boolean values")
         return calcValue.calcValue(split_string, variables_dict)
+
     def visitReverseBoolVar(self, ctx):
         val = ctx.getText().split(" ")
         name = val[0]

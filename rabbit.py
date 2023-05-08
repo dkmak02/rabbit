@@ -10,7 +10,7 @@ NOSEANGLE  = 15
 
 class Rabbit:
 
-	def __init__(self, mainx, mainy):
+	def __init__(self, mainx, mainy, WINDOWX, WINDOWY):
 		self.x = mainx/2
 		self.y = mainy/2
 		self.angle = 0
@@ -18,6 +18,8 @@ class Rabbit:
 		self.pointStart = []
 		self.pointEnd = []
 		self.lineColor = []
+		self.WINDOWX = WINDOWX
+		self.WINDOWY = WINDOWY
 	def draw(self, screen):
 		screen.blit(self.image, self.imageRect)
 	def setImage(self, image):
@@ -52,8 +54,8 @@ class Rabbit:
 		self.x = self.imageRect.centerx
 		self.y = self.imageRect.centery
 	def home(self):
-		self.x = WINDOWX/2
-		self.y = WINDOWY/2
+		self.x = self.WINDOWX/2
+		self.y = self.WINDOWY/2
 		self.angle = 0
 		self.angleRad = 0
 		self.pointStart = []
