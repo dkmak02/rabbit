@@ -105,11 +105,13 @@ class MyVisitor(rabbitVisitor):
         if type == 'int':
             if '(' in value[0]:
                 value = self.visitCall(value)
-            value = self.visitInfiExpr(value)
+            else:
+                value = self.visitInfiExpr(value)
         elif type == 'bool':
             if '(' in value[0]:
                 value = self.visitCall(value)
-            value = self.visitBoolExpr(value)
+            else:
+                value = self.visitBoolExpr(value)
         variables_dict[name] = {"type": type, "value": value}
 
     def visitFunction(self, ctx):
@@ -169,10 +171,10 @@ class MyVisitor(rabbitVisitor):
 
         if type == 'int':
             fun_val = fun_c(comm, wating, to_remove, visitor, to_return, 'int')
-            return to_return
+            return fun_val
         elif type == 'bool':
             fun_val = fun_c(comm, wating, to_remove, visitor, to_return, 'bool')
-            return to_return
+            return fun_val
         else:
             fun_c(comm, wating, to_remove, visitor)
 
