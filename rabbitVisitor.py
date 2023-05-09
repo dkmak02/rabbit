@@ -199,5 +199,10 @@ class rabbitVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by rabbitParser#CallExpr.
+    def visitCallExpr(self, ctx:rabbitParser.CallExprContext):
+        return self.visitChildren(ctx)
+
+
 
 del rabbitParser

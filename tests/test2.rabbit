@@ -1,2 +1,2 @@
 int ppp(qq) { go qq } return qq
-for 5 { go ppp(100)  angle 90  sleep 1 }
+go ppp(1)+1

@@ -26,7 +26,7 @@ cmd: go #Command
    | call #CallFunction
    ;
 
-call: name '('(name', '|expr', ')*(name|expr)')';
+call: name '('(name', '|expr', ')*(name|expr)*')';
 
 fun:('bool '|'int '|'void ')  name '('(name', '|INT', ')*(name|INT)') ' block ' ' ( 'return ' expr)?;
 
@@ -69,7 +69,7 @@ jump: 'jump 'expr ' ' expr;
 
 sleep: 'sleep ' expr;
 go:
-    'go ' expr;
+    'go ' (expr);
 home:
     'home';
 comparisonOperator: '<'
@@ -95,7 +95,9 @@ expr:
         value ('*'|'/') (value|expr)        #InfiExpr
     |	value ('+'|'-') (value|expr)        #InfiExpr
     |   value                               #NumberExpr
+    |   call                                #CallExpr
     ;
+
 INT  : [-]*[0-9]+;
 TRUE: 'TRUE'
     | 'true'

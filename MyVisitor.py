@@ -235,6 +235,9 @@ class MyVisitor(rabbitVisitor):
         if split_string[0] in bools:
             raise ValueError(
                 "Cannot perform mathematical operations on boolean values")
+
+        if '(' in split_string[0]:
+            return self.visitCall(split_string)
         return calcValue.calcValue(split_string, variables_dict)
 
     def visitReverseBoolVar(self, ctx):
