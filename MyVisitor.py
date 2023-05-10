@@ -147,10 +147,15 @@ class MyVisitor(rabbitVisitor):
                 "Function " + name + " takes " + str(functions_dict[name]["args"]) + " arguments, " + str(
                     args_len) + " given")
         type = functions_dict[name]["type"].split('-')[0]
+
         value = functions_dict[name]["value"]
         to_return = None
         if 'return' in value:
             to_return = value[value.index('return') + 1:]
+        if type in ['int', 'bool']:
+            if 'return' not in value:
+                raise ValueError(
+                    "Function " + name + " must return a value")
         comm = value[value.index('{') + 1:value.index('}')]
         comm = splitBlock.todo(comm)
         wating = {}
