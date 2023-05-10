@@ -89,13 +89,13 @@ value
    | TRUE
    | FALSE
    | name
+   | call
    | ('90'|'180'|'270'|'360');
 
 expr:
         value ('*'|'/') (value|expr)        #InfiExpr
     |	value ('+'|'-') (value|expr)        #InfiExpr
     |   value                               #NumberExpr
-    |   call                                #CallExpr
     ;
 
 INT  : [-]*[0-9]+;

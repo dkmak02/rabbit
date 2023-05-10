@@ -1,3 +1,5 @@
+import re
+
 from commands import splitBlock, visitFun
 from expr import logicalCompare, compareValue, ifExpr, calcValue, forExpr
 from rabbitVisitor import rabbitVisitor
@@ -235,9 +237,13 @@ class MyVisitor(rabbitVisitor):
         if split_string[0] in bools:
             raise ValueError(
                 "Cannot perform mathematical operations on boolean values")
-
+        val = 0
         if '(' in split_string[0]:
-            return self.visitCall(split_string)
+            fun_x = re.split(r'([*/+-])', split_string[0])
+            for x in fun_x:
+                if '(' in x:
+                    fun_x[fun_x.index(x)] = int(self.visitCall([x]))
+            split_string[0] = ''.join(map(str, fun_x))
         return calcValue.calcValue(split_string, variables_dict)
 
     def visitReverseBoolVar(self, ctx):

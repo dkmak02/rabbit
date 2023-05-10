@@ -29,8 +29,8 @@ def serializedATN():
         14,1,14,3,14,219,8,14,1,15,1,15,1,15,1,16,1,16,1,16,1,17,1,17,1,
         18,1,18,1,19,1,19,1,20,1,20,1,21,1,21,1,22,1,22,1,22,1,22,1,22,1,
         23,1,23,1,23,1,24,1,24,1,24,1,25,1,25,1,26,1,26,1,27,1,27,1,28,1,
-        28,1,28,1,28,1,28,3,28,259,8,28,1,29,1,29,1,29,1,29,3,29,265,8,29,
-        1,29,1,29,1,29,1,29,3,29,271,8,29,1,29,1,29,3,29,275,8,29,1,29,0,
+        28,1,28,1,28,1,28,1,28,3,28,260,8,28,1,29,1,29,1,29,1,29,3,29,266,
+        8,29,1,29,1,29,1,29,1,29,3,29,272,8,29,1,29,3,29,275,8,29,1,29,0,
         0,30,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,
         44,46,48,50,52,54,56,58,0,6,1,0,4,6,1,0,50,51,1,0,22,25,1,0,36,43,
         1,0,44,45,1,0,46,47,298,0,60,1,0,0,0,2,85,1,0,0,0,4,87,1,0,0,0,6,
@@ -39,7 +39,7 @@ def serializedATN():
         0,24,202,1,0,0,0,26,204,1,0,0,0,28,218,1,0,0,0,30,220,1,0,0,0,32,
         223,1,0,0,0,34,226,1,0,0,0,36,228,1,0,0,0,38,230,1,0,0,0,40,232,
         1,0,0,0,42,234,1,0,0,0,44,236,1,0,0,0,46,241,1,0,0,0,48,244,1,0,
-        0,0,50,247,1,0,0,0,52,249,1,0,0,0,54,251,1,0,0,0,56,258,1,0,0,0,
+        0,0,50,247,1,0,0,0,52,249,1,0,0,0,54,251,1,0,0,0,56,259,1,0,0,0,
         58,274,1,0,0,0,60,61,3,2,1,0,61,1,1,0,0,0,62,86,3,48,24,0,63,86,
         3,44,22,0,64,86,3,50,25,0,65,86,3,30,15,0,66,86,3,32,16,0,67,86,
         3,20,10,0,68,86,3,16,8,0,69,86,3,24,12,0,70,86,3,26,13,0,71,86,3,
@@ -98,16 +98,16 @@ def serializedATN():
         45,1,0,0,0,241,242,5,33,0,0,242,243,3,58,29,0,243,47,1,0,0,0,244,
         245,5,34,0,0,245,246,3,58,29,0,246,49,1,0,0,0,247,248,5,35,0,0,248,
         51,1,0,0,0,249,250,7,3,0,0,250,53,1,0,0,0,251,252,5,52,0,0,252,55,
-        1,0,0,0,253,259,5,49,0,0,254,259,5,50,0,0,255,259,5,51,0,0,256,259,
-        3,54,27,0,257,259,7,2,0,0,258,253,1,0,0,0,258,254,1,0,0,0,258,255,
-        1,0,0,0,258,256,1,0,0,0,258,257,1,0,0,0,259,57,1,0,0,0,260,261,3,
-        56,28,0,261,264,7,4,0,0,262,265,3,56,28,0,263,265,3,58,29,0,264,
-        262,1,0,0,0,264,263,1,0,0,0,265,275,1,0,0,0,266,267,3,56,28,0,267,
-        270,7,5,0,0,268,271,3,56,28,0,269,271,3,58,29,0,270,268,1,0,0,0,
-        270,269,1,0,0,0,271,275,1,0,0,0,272,275,3,56,28,0,273,275,3,4,2,
-        0,274,260,1,0,0,0,274,266,1,0,0,0,274,272,1,0,0,0,274,273,1,0,0,
-        0,275,59,1,0,0,0,22,85,95,97,102,104,117,119,124,131,147,159,161,
-        169,176,180,193,200,218,258,264,270,274
+        1,0,0,0,253,260,5,49,0,0,254,260,5,50,0,0,255,260,5,51,0,0,256,260,
+        3,54,27,0,257,260,3,4,2,0,258,260,7,2,0,0,259,253,1,0,0,0,259,254,
+        1,0,0,0,259,255,1,0,0,0,259,256,1,0,0,0,259,257,1,0,0,0,259,258,
+        1,0,0,0,260,57,1,0,0,0,261,262,3,56,28,0,262,265,7,4,0,0,263,266,
+        3,56,28,0,264,266,3,58,29,0,265,263,1,0,0,0,265,264,1,0,0,0,266,
+        275,1,0,0,0,267,268,3,56,28,0,268,271,7,5,0,0,269,272,3,56,28,0,
+        270,272,3,58,29,0,271,269,1,0,0,0,271,270,1,0,0,0,272,275,1,0,0,
+        0,273,275,3,56,28,0,274,261,1,0,0,0,274,267,1,0,0,0,274,273,1,0,
+        0,0,275,59,1,0,0,0,22,85,95,97,102,104,117,119,124,131,147,159,161,
+        169,176,180,193,200,218,259,265,271,274
     ]
 
 class rabbitParser ( Parser ):
@@ -2412,6 +2412,10 @@ class rabbitParser ( Parser ):
             return self.getTypedRuleContext(rabbitParser.NameContext,0)
 
 
+        def call(self):
+            return self.getTypedRuleContext(rabbitParser.CallContext,0)
+
+
         def getRuleIndex(self):
             return rabbitParser.RULE_value
 
@@ -2438,32 +2442,42 @@ class rabbitParser ( Parser ):
         self.enterRule(localctx, 56, self.RULE_value)
         self._la = 0 # Token type
         try:
-            self.state = 258
+            self.state = 259
             self._errHandler.sync(self)
-            token = self._input.LA(1)
-            if token in [49]:
+            la_ = self._interp.adaptivePredict(self._input,18,self._ctx)
+            if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 253
                 self.match(rabbitParser.INT)
                 pass
-            elif token in [50]:
+
+            elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 254
                 self.match(rabbitParser.TRUE)
                 pass
-            elif token in [51]:
+
+            elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
                 self.state = 255
                 self.match(rabbitParser.FALSE)
                 pass
-            elif token in [52]:
+
+            elif la_ == 4:
                 self.enterOuterAlt(localctx, 4)
                 self.state = 256
                 self.name()
                 pass
-            elif token in [22, 23, 24, 25]:
+
+            elif la_ == 5:
                 self.enterOuterAlt(localctx, 5)
                 self.state = 257
+                self.call()
+                pass
+
+            elif la_ == 6:
+                self.enterOuterAlt(localctx, 6)
+                self.state = 258
                 _la = self._input.LA(1)
                 if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 62914560) != 0)):
                     self._errHandler.recoverInline(self)
@@ -2471,8 +2485,7 @@ class rabbitParser ( Parser ):
                     self._errHandler.reportMatch(self)
                     self.consume()
                 pass
-            else:
-                raise NoViableAltException(self)
+
 
         except RecognitionException as re:
             localctx.exception = re
@@ -2556,31 +2569,6 @@ class rabbitParser ( Parser ):
                 return visitor.visitChildren(self)
 
 
-    class CallExprContext(ExprContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a rabbitParser.ExprContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def call(self):
-            return self.getTypedRuleContext(rabbitParser.CallContext,0)
-
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterCallExpr" ):
-                listener.enterCallExpr(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitCallExpr" ):
-                listener.exitCallExpr(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitCallExpr" ):
-                return visitor.visitCallExpr(self)
-            else:
-                return visitor.visitChildren(self)
-
-
 
     def expr(self):
 
@@ -2594,25 +2582,25 @@ class rabbitParser ( Parser ):
             if la_ == 1:
                 localctx = rabbitParser.InfiExprContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 260
-                self.value()
                 self.state = 261
+                self.value()
+                self.state = 262
                 _la = self._input.LA(1)
                 if not(_la==44 or _la==45):
                     self._errHandler.recoverInline(self)
                 else:
                     self._errHandler.reportMatch(self)
                     self.consume()
-                self.state = 264
+                self.state = 265
                 self._errHandler.sync(self)
                 la_ = self._interp.adaptivePredict(self._input,19,self._ctx)
                 if la_ == 1:
-                    self.state = 262
+                    self.state = 263
                     self.value()
                     pass
 
                 elif la_ == 2:
-                    self.state = 263
+                    self.state = 264
                     self.expr()
                     pass
 
@@ -2622,25 +2610,25 @@ class rabbitParser ( Parser ):
             elif la_ == 2:
                 localctx = rabbitParser.InfiExprContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 266
-                self.value()
                 self.state = 267
+                self.value()
+                self.state = 268
                 _la = self._input.LA(1)
                 if not(_la==46 or _la==47):
                     self._errHandler.recoverInline(self)
                 else:
                     self._errHandler.reportMatch(self)
                     self.consume()
-                self.state = 270
+                self.state = 271
                 self._errHandler.sync(self)
                 la_ = self._interp.adaptivePredict(self._input,20,self._ctx)
                 if la_ == 1:
-                    self.state = 268
+                    self.state = 269
                     self.value()
                     pass
 
                 elif la_ == 2:
-                    self.state = 269
+                    self.state = 270
                     self.expr()
                     pass
 
@@ -2650,15 +2638,8 @@ class rabbitParser ( Parser ):
             elif la_ == 3:
                 localctx = rabbitParser.NumberExprContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
-                self.state = 272
-                self.value()
-                pass
-
-            elif la_ == 4:
-                localctx = rabbitParser.CallExprContext(self, localctx)
-                self.enterOuterAlt(localctx, 4)
                 self.state = 273
-                self.call()
+                self.value()
                 pass
 
 

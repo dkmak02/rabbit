@@ -373,14 +373,5 @@ class rabbitListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by rabbitParser#CallExpr.
-    def enterCallExpr(self, ctx:rabbitParser.CallExprContext):
-        pass
-
-    # Exit a parse tree produced by rabbitParser#CallExpr.
-    def exitCallExpr(self, ctx:rabbitParser.CallExprContext):
-        pass
-
-
 
 del rabbitParser
