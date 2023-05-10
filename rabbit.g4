@@ -28,7 +28,7 @@ cmd: go #Command
 
 call: name '('(name', '|expr', ')*(name|expr)*')';
 
-fun:('bool '|'int '|'void ')  name '('(name', '|INT', ')*(name|INT)') ' block ' ' ( 'return ' expr)?;
+fun:('bool '|'int '|'void ')  name '('(name', '|INT', ')*(name|INT)?') ' block (' ' ( 'return ' expr))?;
 
 reverseBool: name ' !'name;
 
