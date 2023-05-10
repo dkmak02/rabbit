@@ -1,3 +1,5 @@
+import sys
+
 import commands.visitFun as visitFun
 import commands.declarationCheck as declarationCheck
 from MyVisitor import MyVisitor, CMD
@@ -17,8 +19,10 @@ if __name__ == "__main__":
     rabbit.start()
     rabbit.home()
     CMD().set(Commands(rabbit))
-
-    with open("tests/test2.rabbit", "r") as f:
+    to_open = "tests/test2.rabbit"
+    if len(sys.argv) > 1:
+        to_open = sys.argv[1]
+    with open(to_open, "r") as f:
         for line in f:
             if line != "\n":
                 declarationCheck.declarationCheck(line)
@@ -30,4 +34,3 @@ if __name__ == "__main__":
             if line != "\n":
                 visitor = MyVisitor()
                 visitFun.visitFun(line, visitor)
-

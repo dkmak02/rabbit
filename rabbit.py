@@ -62,6 +62,7 @@ class Rabbit:
 			self.angleRad = math.radians(self.angle)
 			self.image = rot_center(self.imageSave, self.image,self.angle)
 			self.draw()
+		pygame.display.update()
 
 	def mvForward(self, distance):
 		self.pointStart.append((self.x, self.y))
@@ -84,6 +85,8 @@ class Rabbit:
 		self.imageRect = self.imageRect.move([self.x , self.y ])
 		self.x = self.imageRect.centerx
 		self.y = self.imageRect.centery
+		self.draw()
+		pygame.display.update()
 
 	def jump(self, x, y):
 		self.x = x
@@ -92,6 +95,7 @@ class Rabbit:
 		self.x = self.imageRect.centerx
 		self.y = self.imageRect.centery
 		self.draw()
+		pygame.display.update()
 
 def rot_center(orig_image, image, angle):
     orig_rect = image.get_rect()
