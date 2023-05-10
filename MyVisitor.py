@@ -115,6 +115,9 @@ class MyVisitor(rabbitVisitor):
                 value = self.visitCall(value)
             else:
                 value = self.visitBoolExpr(value)
+        if value is None:
+            raise ValueError(
+                "Variable must be initialized")
         variables_dict[name] = {"type": type, "value": value}
 
     def visitFunction(self, ctx):
