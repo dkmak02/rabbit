@@ -22,7 +22,13 @@ cmd: go #Command
    | print #Command
    | restart #Command
    | reverseBool #ReverseBoolVar
+   | fun #Function
+   | call #CallFunction
    ;
+
+call: name '('(name', '|expr', ')*(name|expr)*')';
+
+fun:('bool '|'int '|'void ')  name '('(name', '|INT', ')*(name|INT)?') ' block (' ' ( 'return ' expr))?;
 
 reverseBool: name ' !'name;
 
@@ -30,9 +36,10 @@ reverseBool: name ' !'name;
 restart: 'reset';
 
 print: 'print 'expr;
-declaration: 'int ' name ' 'expr
+declaration: 'int ' name ' '(expr|call)
         | 'bool ' name ' '(TRUE|FALSE)
-        | 'bool ' name' ' comparison;
+        | 'bool ' name' ' (comparison|call);
+
 if: 'if ' comparison ' ? ' block (' else ' block)?;
 block: '{ ' (cmd ' '+)+ '}';
 for: 'for ' expr ' '  block;
@@ -62,7 +69,7 @@ jump: 'jump 'expr ' ' expr;
 
 sleep: 'sleep ' expr;
 go:
-    'go ' expr;
+    'go ' (expr);
 home:
     'home';
 comparisonOperator: '<'
@@ -82,6 +89,7 @@ value
    | TRUE
    | FALSE
    | name
+   | call
    | ('90'|'180'|'270'|'360');
 
 expr:
@@ -89,6 +97,7 @@ expr:
     |	value ('+'|'-') (value|expr)        #InfiExpr
     |   value                               #NumberExpr
     ;
+
 INT  : [-]*[0-9]+;
 TRUE: 'TRUE'
     | 'true'

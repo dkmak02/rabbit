@@ -44,6 +44,26 @@ class rabbitVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by rabbitParser#Function.
+    def visitFunction(self, ctx:rabbitParser.FunctionContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by rabbitParser#CallFunction.
+    def visitCallFunction(self, ctx:rabbitParser.CallFunctionContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by rabbitParser#call.
+    def visitCall(self, ctx:rabbitParser.CallContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by rabbitParser#fun.
+    def visitFun(self, ctx:rabbitParser.FunContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by rabbitParser#reverseBool.
     def visitReverseBool(self, ctx:rabbitParser.ReverseBoolContext):
         return self.visitChildren(ctx)

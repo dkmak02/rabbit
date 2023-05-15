@@ -1,6 +1,4 @@
 from commands import visitFun
-
-
 def todo(block):
     block.append("")
     todo = []
@@ -11,14 +9,24 @@ def todo(block):
             s = ""
         else:
             s += i + " "
-
     todo = list(filter(None, todo))
     for i in todo:
         c = 0
         if '{' in i:
             c = 1
             index = todo.index(i)
-            for j in range(len(todo)-1, index, -1):
+            start = 1
+            end = 0
+            to = 0
+            for j in range(index+1, len(todo)):
+                if '{' in todo[j]:
+                    start += 1
+                if '}' in todo[j]:
+                    end += 1
+                if start == end:
+                    to = j
+                    break
+            for j in range(to, index, -1):
                 if '}' in todo[j]:
                     todo[index] = '  '.join(todo[index:j+1])
                     s = todo[index]
@@ -26,8 +34,6 @@ def todo(block):
                     for k in range(j, index, -1):
                         todo.pop(k)
                     break
-
-
     return todo
 def forcommand(iterator, block, variables_dict, visitor):
     comm = todo(block)
@@ -37,6 +43,5 @@ def forcommand(iterator, block, variables_dict, visitor):
                 if '{' in j:
                     pass
                 else:
-                    #replace { with i
                     j = j.replace('}', '')
             visitFun.visitFun(j, visitor)
