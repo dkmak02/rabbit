@@ -166,12 +166,12 @@ class rabbitListener(ParseTreeListener):
                 variables_dict[name] = {"type": type, "value": False}
 
 
-    # Enter a parse tree produced by rabbitParser#if.
-    def enterIf(self, ctx:rabbitParser.IfContext):
+    # Enter a parse tree produced by rabbitParser#block.
+    def enterBlock(self, ctx:rabbitParser.BlockContext):
         pass
 
-    # Exit a parse tree produced by rabbitParser#if.
-    def exitIf(self, ctx:rabbitParser.IfContext):
+    # Exit a parse tree produced by rabbitParser#block.
+    def exitBlock(self, ctx:rabbitParser.BlockContext):
         pass
 
 

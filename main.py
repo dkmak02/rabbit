@@ -1,5 +1,4 @@
 import sys
-
 import commands.visitFun as visitFun
 import commands.declarationCheck as declarationCheck
 from MyVisitor import MyVisitor, CMD
