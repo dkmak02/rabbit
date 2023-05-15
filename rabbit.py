@@ -1,5 +1,12 @@
 import pygame
 import math
+WINDOWX    = 500
+WINDOWY    = 500
+
+#RABBIT PROPERTIES
+TURTLE_WIDTH = 25
+TURTLE_HEIGHT = 25
+NOSEANGLE  = 15
 
 class Rabbit:
 

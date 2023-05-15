@@ -1,0 +1,92 @@
+grammar rabbit;
+prog:	cmd;
+cmd: go     #Command
+   | jump  #Command
+   | home #Command
+   | reset #Command
+   | angle #Command
+   | setView #Command
+   | for #Command
+   | if #IfBlock
+   | getX #Command
+   | getY #Command
+   | getAngle #Command
+   | getItem #Command
+   | putItem #Command
+   | checkField #Command
+   | spaceLeft #Command
+   | setValue #Reassignment
+   | sleep #Command
+   | declaration #DeclarationExpr
+   ;
+declaration: 'int ' name ' 'expr
+        | 'bool ' name ' '(TRUE|FALSE)
+        | 'bool ' name' ' comparison;
+block: '{'cmd*'}' ;
+if: 'if ' comparison '?' block 'endif'|
+    'if ' comparison '?' block 'else' block 'endif';
+for: 'for' expr  block 'endfor';
+comparison
+   : (expr) comparisonOperator (expr|comparison)
+   ;
+getX: 'getX';
+getY: 'getY';
+setValue: 'name ' expr|
+    'name ' (TRUE|FALSE);
+
+angle: 'angle' ('90'|'180'|'270'|'360');
+
+setView: 'SETVIEW' KATY;
+
+spaceLeft: 'spaceLeft';
+
+checkField:'checkField';
+
+container: 'container';
+
+putItem: 'putItem';
+
+getItem: 'getItem';
+
+getAngle: 'getAngle';
+
+reset: 'reset';
+
+jump: 'jump 'expr ' ' expr;
+
+sleep: 'sleep' expr;
+go:
+    'go ' expr;
+home:
+    'home';
+comparisonOperator: '<'
+   | '>'
+   | '=='
+   | '!='
+   | '&'
+   | '|'
+   ;
+name
+   : STRING
+   ;
+value
+   : INT
+   | TRUE
+   | FALSE
+   | name;
+
+expr:
+        value ('*'|'/') (value|expr)        #InfiExpr
+    |	value ('+'|'-') (value|expr)        #InfiExpr
+    |   value                               #NumberExpr
+    ;
+INT  : [0-9]+;
+TRUE: 'TRUE'
+    | 'true'
+    | 'True';
+FALSE: 'FALSE'
+    | 'false'
+    | 'False';
+STRING : [a-zA-Z][a-zA-Z0-9_]*;
+WS   : [ \t]+ -> skip ;
+KATY: 'PRAWO'|'LEWO'|'GORA'|'DOL';
