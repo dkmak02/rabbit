@@ -35,6 +35,7 @@ def todo(block):
                         todo.pop(k)
                     break
     return todo
+
 def forcommand(iterator, block, variables_dict, visitor):
     comm = todo(block)
     for i in range(iterator):

@@ -973,38 +973,6 @@ class rabbitParser ( Parser ):
                 self.expr()
 
 
-        def getRuleIndex(self):
-            return rabbitParser.RULE_reverseBool
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterReverseBool" ):
-                listener.enterReverseBool(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitReverseBool" ):
-                listener.exitReverseBool(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitReverseBool" ):
-                return visitor.visitReverseBool(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-
-
-    def reverseBool(self):
-
-        localctx = rabbitParser.ReverseBoolContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 4, self.RULE_reverseBool)
-        try:
-            self.enterOuterAlt(localctx, 1)
-            self.state = 81
-            self.name()
-            self.state = 82
-            self.match(rabbitParser.T__0)
-            self.state = 83
-            self.name()
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1283,6 +1251,7 @@ class rabbitParser ( Parser ):
                     self.state = 158
                     self.call()
                     pass
+
 
                 pass
 

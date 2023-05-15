@@ -1,3 +1,2 @@
-
 int ppp(qq) { go qq } return qq
 go ppp(1)+1
