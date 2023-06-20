@@ -69,8 +69,17 @@ class Rabbit:
 		self.imageRect = self.imageRect.move(
 			[int(distance * math.cos(self.angleRad)), int(-distance * math.sin(self.angleRad))])
 		self.draw()
+		if self.imageRect.centerx > 490:
+			self.imageRect.centerx = 490
+		if self.imageRect.centerx < 10:
+			self.imageRect.centerx = 10
+		if self.imageRect.centery > 490:
+			self.imageRect.centery = 490
+		if self.imageRect.centery < 10:
+			self.imageRect.centery = 10
 		self.x = self.imageRect.centerx
 		self.y = self.imageRect.centery
+		self.draw()
 		pygame.display.update()
 
 	def getX(self):
@@ -97,6 +106,14 @@ class Rabbit:
 		self.x = x
 		self.y = y
 		self.imageRect = self.imageRect.move([self.x, self.y])
+		if self.imageRect.centerx > 490:
+			self.imageRect.centerx = 490
+		if self.imageRect.centerx < 10:
+			self.imageRect.centerx = 10
+		if self.imageRect.centery > 490:
+			self.imageRect.centery = 490
+		if self.imageRect.centery < 10:
+			self.imageRect.centery = 10
 		self.x = self.imageRect.centerx
 		self.y = self.imageRect.centery
 		self.draw()
