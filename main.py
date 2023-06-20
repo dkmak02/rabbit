@@ -19,7 +19,7 @@ if __name__ == "__main__":
     rabbit.start()
     rabbit.home()
     CMD().set(Commands(rabbit))
-    to_open = "tests/test2.rabbit"
+    to_open = "backpack/first.rabbit"
     if len(sys.argv) > 1:
         to_open = sys.argv[1]
     with open(to_open, "r") as f:

@@ -1,4 +1,5 @@
 bool xd false
+bool xd true
 print xd
 bool xd2 true==false
 print xd2

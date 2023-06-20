@@ -1,2 +1,2 @@
 int dsa 0
-for 10 { for 10 { dsa dsa+1  print dsa }  if 2>3 ? { for 5 { go 21 } } else { go 12 }  go 15 }
+for 10 { for 10 { dsa dsa+1  sleep 1  print dsa }  if 2>3 ? { for 5 { go 21 } } else { go 12 }  go 15 }

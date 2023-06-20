@@ -73,6 +73,11 @@ class Rabbit:
 		self.y = self.imageRect.centery
 		pygame.display.update()
 
+	def getX(self):
+		return self.x
+	def getY(self):
+		return self.y
+
 	def home(self):
 		self.x = self.WINDOWX/2
 		self.y = self.WINDOWY/2

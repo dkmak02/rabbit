@@ -232,10 +232,16 @@ class MyVisitor(rabbitVisitor):
                 cmd.get().setViewCommand(val[0])
             case "sleep":
                 cmd.get().sleepCommand(int(val[0]))
-            case "if":
-                print("not implemented yet")
-            case "for":
-                print("not implemented yet")
+            case "checkField":
+                cmd.get().checkFieldCommand()
+            case "spaceLeft":
+                cmd.get().spaceLeftCommand()
+            case "putItem":
+                if int(cmd.get().getXCommand()) == 262 and int(cmd.get().getYCommand()) == 262:
+                    cmd.get().putItemCommand()
+            case "getItem":
+                item = cmd.get().checkFieldCommand()
+                cmd.get().getItemCommand(item)
             case "print":
                 cmd.get().printCommand(variables_dict, val)
         return (command, val)
