@@ -1,10 +1,24 @@
 import time
+import random
+
+
 class Commands:
     def __init__(self, rabbit):
         self.rabbit = rabbit
         self.spaceLeft = 5
         self.maxSpace = 5
-        self.items = {(262, 261): 2, (362, 162): 2, (23, 421): 2, (123, 312): 1, (231, 312): 1, (245, 312): 1}
+        self.items = self.creteItems()
+    def creteItems(self):
+        items = {}
+        for z in range(100):
+            x = random.randint(10, 490)
+            y = random.randint(10, 490)
+            items[(x, y)] = 1
+        for z in range(10):
+            x = random.randint(10, 490)
+            y = random.randint(10, 490)
+            items[(x, y)] = 2
+        return items
     def goCommand(self, val):
         self.rabbit.mvForward(val)
     def homeCommand(self):
