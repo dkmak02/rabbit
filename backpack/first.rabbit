@@ -1,2 +1,11 @@
-jump -500 -500
-sleep 2
+jump -300 -300
+for 490 { go 1  getItem }
+angle 270
+sleep 1
+go 1
+getItem
+angle 270
+for 490 { go 1  getItem }
+angle 270
+sleep 1
+

@@ -10,11 +10,11 @@ class Commands:
         self.items = self.creteItems()
     def creteItems(self):
         items = {}
-        for z in range(100):
+        for z in range(1000):
             x = random.randint(10, 490)
             y = random.randint(10, 490)
             items[(x, y)] = 1
-        for z in range(10):
+        for z in range(100):
             x = random.randint(10, 490)
             y = random.randint(10, 490)
             items[(x, y)] = 2
@@ -41,7 +41,6 @@ class Commands:
         print(variables_dict[var[0]]["type"],'{',var[0],': ', variables_dict[var[0]]["value"],'}')
     def checkFieldCommand(self):
         x, y = int(self.rabbit.getX()), int(self.rabbit.getY())
-        print(x, y)
         item = self.items.get((x, y))
         return item
     def spaceLeftCommand(self):
@@ -54,10 +53,12 @@ class Commands:
         if item == 1:
             if self.spaceLeft > 0:
                 self.spaceLeft -= 1
+                print("You got an item")
             else:
                 print("There is no space left")
         elif item == 2:
-            print(self.spaceLeft)
+            print("You got a backpack")
+            print("new max space: ", self.maxSpace + 5)
             self.maxSpace += 5
             self.spaceLeft += 5
         else:
